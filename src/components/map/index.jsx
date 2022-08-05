@@ -26,6 +26,15 @@ class Map extends React.Component {
 
                 myMap.geoObjects.add(mapMark);
             });
+
+            const mql = window.matchMedia('(max-width: 798px)');
+            const screenTest = e => {
+                if (e.matches) return myMap.behaviors.disable(['drag', 'scrollZoom']);
+                myMap.behaviors.enable(['drag', 'scrollZoom']);
+            }
+
+            screenTest(mql);
+            mql.addEventListener('change', screenTest);
         }
 
         ymaps.ready(init);
