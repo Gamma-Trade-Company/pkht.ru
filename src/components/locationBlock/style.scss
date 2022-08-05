@@ -1,0 +1,52 @@
+.locationBlock {
+
+    &:not(:last-of-type) {
+        margin-bottom: 60px;
+    }
+
+    &_name {
+        font-size: 20px;
+        line-height: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+    &_address {
+        font-size: 16px;
+        line-height: 19px;
+        margin-bottom: 16px;
+    }
+
+    &_phonesList {
+        list-style: none;
+    }
+
+    &_phone {
+
+    }
+
+    &_phoneLink {
+        text-decoration: none;
+    }
+    
+    @media (max-width: 798px) {
+        margin-bottom: 24px;
+
+        &:not(:last-of-type) {
+            margin-bottom: 24px;
+        }
+
+        &_name {
+            font-size: 18px;
+            line-height: 18px;
+        }
+
+        &_address {
+            font-size: 14px;
+            line-height: 19px;
+        }
+        &_phoneLink {
+            font-size: 14px;
+        }
+    }
+}
