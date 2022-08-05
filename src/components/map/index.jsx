@@ -5,12 +5,14 @@ class Map extends React.Component {
         super(props);
     }
 
+    #myMap = null;
+
     componentDidMount () {
 
         const {ymaps} = global;
         
         const init = () => {
-            const myMap = new ymaps.Map(this.props.id, {
+            const myMap = this.#myMap = new ymaps.Map(this.props.id, {
                 center: this.props.center,
                 zoom: this.props.zoom,
                 controls: []
@@ -38,6 +40,10 @@ class Map extends React.Component {
         }
 
         ymaps.ready(init);
+    }
+
+    componentWillUnmount() {
+        if (this.#myMap) this.#myMap.destroy();
     }
 
     render () {
