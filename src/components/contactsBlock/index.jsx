@@ -2,93 +2,10 @@ import React from 'react';
 
 import './style.scss';
 
-class PageWrapper extends React.Component {
-    render () {
-        return (
-            <div className="pageWrapper">
-                {this.props.children}
-            </div>
-        );
-    }
-}
-
-class BlockHeader extends React.Component {
-    render () {
-        return (
-            <h2 className="blockHeader">
-                {this.props.children}
-            </h2>
-        );
-    }
-}
-
-class Map extends React.Component {
-    constructor (props) {
-        super(props);
-    }
-
-    componentDidMount () {
-
-        const {ymaps} = global;
-        
-        const init = () => {
-            const myMap = new ymaps.Map(this.props.id, {
-                center: this.props.center,
-                zoom: this.props.zoom,
-                controls: []
-            });
-
-            this.props.marks.forEach (mark => {
-                const mapMark = new ymaps.Placemark(mark.location, {}, {
-                    iconLayout: 'default#image',
-                    iconImageHref: mark.img,
-                    iconImageSize: mark.size,
-                    iconImageOffset: mark.position
-                });
-
-                myMap.geoObjects.add(mapMark);
-            });
-        }
-
-        ymaps.ready(init);
-    }
-
-    render () {
-        return (
-            <div className={this.props.className} id={this.props.id}>
-
-            </div>
-        )
-    }
-}
-
-class LocationBlock extends React.Component {
-    render () {
-        const {
-            name,
-            address,
-            phones
-        } = this.props.data;
-        return (
-            <div className="locationBlock" style={this.props.style}>
-                <h3 className="locationBlock_name">{name}</h3>
-                <p className="locationBlock_address" dangerouslySetInnerHTML={{__html: address}} />
-                <ul className="locationBlock_phonesList">
-                    {
-                        phones.map(({number, text}, i) => (
-                            <li className="locationBlock_phone" key={i}>
-                                <a
-                                    href={"tel:"+number}
-                                    className="locationBlock_phoneLink"
-                                >{text}</a>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </div>
-        );
-    }
-}
+import PageWrapper from '../pageWrapper/';
+import BlockHeader from '../blockHeader/';
+import Map from '../map/';
+import LocationBlock from '../locationBlock/';
 
 class ContactsBlock extends React.Component {
     render () {

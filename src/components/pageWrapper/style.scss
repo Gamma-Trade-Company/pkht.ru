@@ -1,0 +1,11 @@
+.pageWrapper {
+    padding: 0px calc(50% - 560px);
+
+    @media (max-width: 1180px) {
+        padding: 0px 30px;
+    }
+
+    @media (max-width: 798px) {
+        padding: 0px 15px;
+    }
+}
