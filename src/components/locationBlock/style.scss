@@ -1,3 +1,5 @@
+@import '../../style/color';
+
 .locationBlock {
 
     &:not(:last-of-type) {
@@ -27,6 +29,7 @@
 
     &_phoneLink {
         text-decoration: none;
+        color: $text;
     }
     
     @media (max-width: 798px) {
