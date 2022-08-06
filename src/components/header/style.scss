@@ -1,0 +1,45 @@
+@import '../../style/color';
+
+.header {
+    position: fixed;
+    width: 100%;
+    height: 120px;
+    padding: 0px calc(50% - 560px);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    border-bottom: 1px solid $border-grey;
+
+    &_logo {
+
+
+        &Img {
+            width: 74px;
+            height: 92px;
+        }
+    }
+
+    &_nav {
+        margin-left: auto;
+    
+        &List {
+            list-style: none;
+        }
+
+        &Link {
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 16px;
+            color: $text;
+        }
+    }
+
+    @media (max-width: 1180px) {
+        padding: 0px 30px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 0px 15px;
+    }
+}
