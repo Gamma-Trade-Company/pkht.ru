@@ -1,0 +1,53 @@
+@import '../../../style/color';
+
+.advantageBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 260px;
+    padding: 32px;
+    border-radius: 24px;
+    margin-bottom: 32px;
+    background: $blocks-grey-bg;
+
+    &_title {
+        font-size: 24px;
+        line-height: 27px;
+        font-weight: 600;
+    }
+
+    &_text {
+        width: 323px;
+        font-size: 16px;
+        line-height: 19px;
+        color: $text-secondary;
+    }
+
+    @media (max-width: 1000px) {
+        padding: 24px;
+        margin-bottom: 24px;
+        height: 220px;
+
+        &_title {
+            font-size: 22px;
+            line-height: 25px;
+        }
+    
+        &_text {
+            width: 100%;
+            font-size: 14px;
+            line-height: 19px;
+        }
+    }
+
+    @media (max-width: 680px) {
+        padding: 14px;
+        height: auto;
+
+        &_title {
+            font-size: 18px;
+            line-height: 21px;
+            margin-bottom: 24px;
+        }
+    }
+}
