@@ -2,15 +2,14 @@ import React from 'react';
 
 import './style.scss';
 
-import PageWrapper from '../pageWrapper/';
 import BlockHeader from '../blockHeader/';
 import Map from '../map/';
-import LocationBlock from '../locationBlock/';
+import LocationBlock from './components/locationBlock/';
 
 class ContactsBlock extends React.Component {
     render () {
         return (
-            <PageWrapper>
+            <>
                 <BlockHeader>Контакты</BlockHeader>
                 <div className="contactsBlock">
                     <div className="contactsBlock_text">
@@ -63,7 +62,7 @@ class ContactsBlock extends React.Component {
                         ]}
                      />
                 </div>
-            </PageWrapper>
+            </>
         );
     }
 }
