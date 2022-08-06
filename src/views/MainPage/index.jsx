@@ -7,14 +7,14 @@ import Advantages from "../../components/advantages";
 
 export default class MainPage extends Component {
     render() {
-        return <main>
+        return <>
             <TopBanner/>
 
-            <PageWrapper>
+            <PageWrapper page="main">
                 <Advantages />
                 <ProductsBlock />
                 <ContactsBlock />
             </PageWrapper>
-        </main>
+        </>
     }
 }

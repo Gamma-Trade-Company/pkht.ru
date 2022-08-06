@@ -5,8 +5,12 @@ import MainPage from '../../views/MainPage';
 export default class App extends Component {
 
   render() {
-    return <>
-    <MainPage/>
-    </>
+    return (
+      <>
+        <main>
+          <MainPage/>
+        </main>
+      </>
+    )
   }
 }
