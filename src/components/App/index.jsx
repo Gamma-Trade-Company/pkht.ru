@@ -19,13 +19,13 @@ export default class App extends Component {
     window.addEventListener('scroll', this.showBtnToUp);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.showBtnToUp);
+  }
+
   showBtnToUp = () => {
     if (window.pageYOffset > 200) return this.setState({visibleBtnToUp: true});
     return this.setState({visibleBtnToUp: false});
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.showBtnToUp);
   }
 
   render() {
