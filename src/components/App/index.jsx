@@ -20,8 +20,8 @@ export default class App extends Component {
   }
 
   showBtnToUp = () => {
-    if (window.pageYOffset > 200) return this.setState(prevState => ({...prevState, visibleBtnToUp: true}));
-    return this.setState(prevState => ({...prevState, visibleBtnToUp: false}));
+    if (window.pageYOffset > 200) return this.setState({visibleBtnToUp: true});
+    return this.setState({visibleBtnToUp: false});
   }
 
   componentWillUnmount() {
