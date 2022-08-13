@@ -30,7 +30,7 @@ class WhereToBuyLinks extends React.Component {
             <div className='whereToBuy'>
                 {
                     this.state.shops.map((shop, i) => (
-                        <div className='whereToBuy_block'>
+                        <div className='whereToBuy_block' key={i}>
                             <img src={shop.img} alt='' className='whereToBuy_img' />
                             <div className='whereToBuy_text'>
                                 <p className='whereToBuy_name'>{shop.name}</p>

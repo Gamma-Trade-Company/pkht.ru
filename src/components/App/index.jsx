@@ -8,6 +8,9 @@ import Header from '../header';
 import Footer from '../footer';
 import WhereToBuy from '../../views/WhereToBuy';
 import ButtonToUp from '../UI/ButtonToUp';
+import NotFound from '../../views/NotFound';
+import Catalog from '../../views/Catalog';
+import DetailedCatalog from '../DetailedCatalog';
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +40,11 @@ export default class App extends Component {
           <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/where-to-buy' element={<WhereToBuy />} />
+            <Route path='/catalog' element={<Catalog/>} >
+              <Route index element={<h1>Каталог</h1>} />
+              <Route path=':id/*' element={<DetailedCatalog/>} />
+            </Route>
+            <Route path='*' element={<NotFound/>}/>
           </Routes>
         </main>
         <Footer />
