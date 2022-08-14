@@ -1,0 +1,26 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #2C2C2C;
+    width: 100%;
+    height: 100%;
+    max-width: 256px;
+
+    img {
+        width: 100%;
+        max-width: 256px;
+        align-self: center;
+    }
+
+    .price {
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-top: .5rem;
+    }
+
+    .title {
+        margin-top: .875rem;
+        font-size: 14px;
+    }
+}
