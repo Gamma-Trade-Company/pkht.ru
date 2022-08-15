@@ -16,7 +16,6 @@ export default class ProductItem extends Component {
             <Link 
                 to={link}
                 className={`${className !== undefined ? className : ''} ${classes.card}`}
-                data-filter={this.props.filterList}
                 >
                 <img src={img} alt="" />
                 <p className={classes.price}>
