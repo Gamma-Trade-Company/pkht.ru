@@ -38,11 +38,13 @@
             width: auto;
             display: flex;
             margin: 0 -.67rem;
-            align-self: stretch;
+            flex-grow: 1;
+            flex-shrink: 1;
             flex-wrap: wrap;
 
             li {
-                max-width: 64px;
+                max-width: calc(33.333333333333333333333333333333% - 1.34rem);
+                flex: 0 0 calc(33.333333333333333333333333333333% - 1.34rem);
                 margin: 0 .67rem;
             }
         }

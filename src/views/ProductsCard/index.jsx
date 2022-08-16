@@ -65,7 +65,7 @@ const ProductsCard = () => {
     return (
         <section className={classes.products__card}>
             <div className="container">
-                <h1>{title}</h1>
+                <h1 className={classes.title}>{title}</h1>
                 <div className={`row ${classes['products__card-content']}`}>
                     <div className="col">
                         <ProductGallery imgList={imgList}/>
