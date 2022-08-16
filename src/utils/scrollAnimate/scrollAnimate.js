@@ -1,14 +1,17 @@
 export default function scrollAnimate(scrollableElem, to, duration) {
+    to = Number(to);
+    duration = Number(duration);
     const elem = scrollableElem === window ||
-               scrollableElem === document.documentElement ||
-               scrollableElem === document.body
-               ? window : scrollableElem;
+        scrollableElem === document ||
+        scrollableElem === document.documentElement ||
+        scrollableElem === document.body ?
+        window : scrollableElem;
     const scrollTop = elem === window ? elem.pageYOffset : elem.scrollTop;
     if (scrollTop === to) return;
     const timeStart = performance.now();
-    
+
     to = -(scrollTop - to);
-    elem.scroll = function(distance){
+    elem.scroll = function (distance) {
         if (this === window) return this.scrollTo(0, distance);
         return this.scrollTop = distance;
     };
@@ -22,5 +25,5 @@ export default function scrollAnimate(scrollableElem, to, duration) {
     }
 
     requestAnimationFrame(animation);
-    
+
 }

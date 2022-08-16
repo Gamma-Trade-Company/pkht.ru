@@ -11,6 +11,7 @@ import ButtonToUp from '../UI/ButtonToUp';
 import NotFound from '../../views/NotFound';
 import Catalog from '../../views/Catalog';
 import DetailedCatalog from '../DetailedCatalog';
+import IndexCatalog from '../IndexCatalog';
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -41,7 +42,7 @@ export default class App extends Component {
             <Route path='/' element={<MainPage />} />
             <Route path='/where-to-buy' element={<WhereToBuy />} />
             <Route path='/catalog' element={<Catalog/>} >
-              <Route index element={<h1>Каталог</h1>} />
+              <Route index element={<IndexCatalog/>} />
               <Route path=':id/*' element={<DetailedCatalog/>} />
             </Route>
             <Route path='*' element={<NotFound/>}/>

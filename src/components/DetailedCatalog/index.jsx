@@ -5,6 +5,7 @@ import FilterSide from "./FilterSide";
 import classes from './DetailedCatalog.module.scss';
 import ProductItem from "../ProductItem";
 import { useMemo } from "react";
+import scrollAnimate from '../../utils/scrollAnimate';
 
 const DetailedCatalog = () => {
     const { id } = useParams();
@@ -302,9 +303,11 @@ const DetailedCatalog = () => {
                     }
                 }
                 
+                scrollAnimate(window, 0, 500);
                 return;
             }
         }
+
     }
 
     const filteredProductList = useMemo(()=>{
@@ -369,7 +372,7 @@ const DetailedCatalog = () => {
                     {
                         filteredProductList.length !== 0 ?
                         filteredProductList.map(item => (
-                            <div className="col-6 col-md-4" key={item.link} style={{marginBottom: '3.5rem'}}>
+                            <div className="col-12 col-sm-6 col-md-4" key={item.link} style={{marginBottom: '3.5rem'}}>
                                 <ProductItem {...item}/>
                             </div>                         
                         )) :

@@ -1,0 +1,25 @@
+.category__col {
+    margin-bottom: 2rem;
+
+    &,
+    & ul {
+        list-style: none;
+    }
+
+    li:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    li a {
+        text-decoration: none;
+        font-size: 1rem;
+        display: inline-block;
+        color: #9C9C9C;
+
+        &.category__title {
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+            font-weight: 700;
+        }
+    }
+}

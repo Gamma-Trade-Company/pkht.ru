@@ -8,4 +8,8 @@
     & &__content {
         margin-top: 2.9rem;
     }
+
+    @media only screen and (max-width: 860px) {
+        display: none;
+    }
 }
