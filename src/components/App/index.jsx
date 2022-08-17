@@ -47,7 +47,7 @@ export default class App extends Component {
               <Route path=':id/*' element={<DetailedCatalog/>} />
             </Route>
             <Route path='*' element={<NotFound/>}/>
-            <Route path='/products-card/:id' element={<ProductsCard/>} />
+            <Route path='/product-card/:id' element={<ProductsCard/>} />
           </Routes>
         </main>
         <Footer />

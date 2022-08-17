@@ -3,6 +3,9 @@
     width: calc(220px + 1.34rem);
     .title {
         font-weight: 600;
+        word-wrap: break-word;
+        word-break: break-all;
+        font-size: 1.8rem;
     }
 
     & &__content {
