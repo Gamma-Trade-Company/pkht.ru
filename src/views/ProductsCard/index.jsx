@@ -11,55 +11,11 @@ const ProductsCard = () => {
     const {title, imgList, featureList} = productInfo;
 
     useEffect(()=>{
-        setProductInfo({
-            title: '"Love2art" морилка LAS-80 80 мл',
-            imgList: [
-                '/img/products/3.jpg',
-                '/img/products/4.jpg',
-            ],
-            featureList: [
-                {
-                    name: 'ТМ',
-                    value: 'ТМ',
-                },
-                {
-                    name: 'Серия',
-                    value: 'Серия',
-                },
-                {
-                    name: 'Артикул',
-                    value: 'Артикул',
-                },
-                {
-                    name: 'Вес, кг',
-                    value: 'Вес, кг',
-                },
-                {
-                    name: 'Количество, шт',
-                    value: 'Количество, шт',
-                },
-                {
-                    name: 'Назначение',
-                    value: 'Назначение',
-                },
-                {
-                    name: 'Объем, мл,',
-                    value: 'Объем, мл,',
-                },
-                {
-                    name: 'ТУ',
-                    value: 'ТУ',
-                },
-                {
-                    name: 'Тип товара',
-                    value: 'Тип товара',
-                },
-                {
-                    name: 'Тип упаковки',
-                    value: 'Тип упаковки',
-                },
-            ],
-        });
+        (async()=>{
+            const resp = await fetch(`http://move.pkht.ru/api/catalog/product-card/${id}/`);
+            const { title, imgList, featureList } = await resp.json();
+            setProductInfo({...productInfo, title, imgList, featureList});
+        })();
     },[]);
 
     return (

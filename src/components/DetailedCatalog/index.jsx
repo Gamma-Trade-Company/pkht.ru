@@ -15,7 +15,7 @@ const DetailedCatalog = () => {
         (async()=>{
             const resp =  await fetch(`http://move.pkht.ru/api/catalog/${id}/`);
             const {goods, parentCategory: {name: title}} = await resp.json();
-            setData({...state, title, productList: goods});
+            setData({...data, title, productList: goods});
         })();
     }, []);
 
