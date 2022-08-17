@@ -11,109 +11,21 @@ export default class OpenedCatalog extends Component {
     }
     
     componentDidMount() {
-        this.setState({
-            categoryList: [
-                {
-                    category: {
-                        name: 'Краски',
-                        link: '/catalog/1',
-                    },
-                    listItem: [
-                        {
-                            name: 'Акварель',
-                            link: '/catalog/10'
-                        },
-                        {
-                            name: 'Гуашь',
-                            link: '/catalog/11'
-                        },
-                        {
-                            name: 'Гуашь художественная',
-                            link: '/catalog/12'
-                        },
-                        {
-                            name: 'Масло',
-                            link: '/catalog/13'
-                        },
-                        {
-                            name: 'АКРИЛ',
-                            link: '/catalog/14'
-                        },
-                        {
-                            name: 'Краски по ткани',
-                            link: '/catalog/15'
-                        },
-                    ],
-                },                
-                {
-                    category: {
-                        name: 'Художественные материалы',
-                        link: '/catalog/2',
-                    },
-                    listItem: [
-                        {
-                            name: 'Картон грунтованный',
-                            link: '/catalog/16'
-                        },
-                        {
-                            name: 'Холсты',
-                            link: '/catalog/17'
-                        },
-                        {
-                            name: 'Вспомогательные жидкости',
-                            link: '/catalog/18'
-                        },
-                    ],
-                },                
-                {
-                    category: {
-                        name: 'Канцелярские товары',
-                        link: '/catalog/3',
-                    },
-                    listItem: [
-                        {
-                            name: 'Папки',
-                            link: '/catalog/19'
-                        },
-                        {
-                            name: 'Файлы',
-                            link: '/catalog/20'
-                        },
-                        {
-                            name: 'Регистраторы',
-                            link: '/catalog/21'
-                        },
-                        {
-                            name: 'Архивные Короба',
-                            link: '/catalog/22'
-                        },
-                        {
-                            name: 'Планшет',
-                            link: '/catalog/23'
-                        },
-                        {
-                            name: 'Закладки/планинг',
-                            link: '/catalog/24'
-                        },
-                    ],
-                },                
-                {
-                    category: {
-                        name: 'Товары для лепки',
-                        link: '/catalog/4',
-                    },
-                    listItem: [
-                        {
-                            name: 'Пластилин',
-                            link: '/catalog/25'
-                        },
-                        {
-                            name: 'Доски для лепки',
-                            link: '/catalog/26'
-                        },
-                    ],
-                },                
-            ],
+
+        fetch("http://move.pkht.ru/api/catalog/")
+        .then(resp=>{
+            try {
+                resp.json().then(array=>{
+                    this.state.categoryList = array;
+                    this.setState(this.state);
+                });
+            }
+            catch {
+
+            }
+        })
+        .catch(err=>{
+
         });
     }
 

@@ -27,7 +27,7 @@ class ProductsBlock extends React.Component {
                 },
                 {
                     id: 3,
-                    name: "Товары для лепки",
+                    name: "Товары для детского творчества",
                     img: "/img/categories/4.png"
                 }
             ]
