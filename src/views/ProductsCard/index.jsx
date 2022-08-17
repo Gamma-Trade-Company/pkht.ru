@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import ProductFeature from "../../components/ProductFeature";
 import ProductGallery from "../../components/ProductGallery";
@@ -19,6 +20,8 @@ const ProductsCard = () => {
     },[]);
 
     return (
+        featureList.length === 0 ?
+        <Navigate to="/non-existent" /> :
         <section className={classes.products__card}>
             <div className="container">
                 <h1 className={classes.title}>{title}</h1>
