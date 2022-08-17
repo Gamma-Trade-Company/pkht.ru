@@ -16,7 +16,7 @@ export default class ProductFeature extends Component {
                                 return (
                                     <Fragment key={name}>
                                         <div className={`col-6 ${classes.item__text} ${classes.name}`}>{name}</div>
-                                        <div className={`col-6 ${classes.item__text} ${classes.value}`}>{value}</div>
+                                        <div className={`col-6 ${classes.item__text}`}>{value}</div>
                                     </Fragment>
                                 );
                             })

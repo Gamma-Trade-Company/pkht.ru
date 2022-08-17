@@ -44,10 +44,10 @@ export default class App extends Component {
             <Route path='/where-to-buy' element={<WhereToBuy />} />
             <Route path='/catalog' element={<Catalog/>} >
               <Route index element={<IndexCatalog/>} />
+              <Route path='product-card/:id' element={<ProductsCard/>} />
               <Route path=':id/*' element={<DetailedCatalog/>} />
             </Route>
             <Route path='*' element={<NotFound/>}/>
-            <Route path='/product-card/:id' element={<ProductsCard/>} />
           </Routes>
         </main>
         <Footer />

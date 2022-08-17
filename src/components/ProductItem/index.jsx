@@ -14,7 +14,7 @@ export default class ProductItem extends Component {
 
         return (
             <Link 
-                to={link}
+                to={`/catalog${link}`}
                 className={`${className !== undefined ? className : ''} ${classes.card}`}
                 >
                 <img src={img} alt="" />
