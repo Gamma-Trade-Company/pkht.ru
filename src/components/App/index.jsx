@@ -12,6 +12,7 @@ import NotFound from '../../views/NotFound';
 import Catalog from '../../views/Catalog';
 import DetailedCatalog from '../DetailedCatalog';
 import IndexCatalog from '../IndexCatalog';
+import ProductsCard from '../../views/ProductsCard';
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +47,7 @@ export default class App extends Component {
               <Route path=':id/*' element={<DetailedCatalog/>} />
             </Route>
             <Route path='*' element={<NotFound/>}/>
+            <Route path='/products-card/:id' element={<ProductsCard/>} />
           </Routes>
         </main>
         <Footer />

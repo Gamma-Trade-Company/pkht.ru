@@ -1,0 +1,21 @@
+.products__card {
+    margin-top: 3.3rem;
+    margin-bottom: 7rem;
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    &-content {
+        margin-top: 3.3rem!important;
+
+        .feature {
+            width: 366px;
+
+            @media only screen and (max-width: 800px) {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
