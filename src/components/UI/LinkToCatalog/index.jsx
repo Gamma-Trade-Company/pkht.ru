@@ -6,7 +6,7 @@ export default class LinkToCatalog extends Component {
     render() {
         const {className} = this.props;
         return (
-            <Link to="/catalog" className={`${classes.link} ${className}`}>
+            <Link to="/catalog/" className={`${classes.link} ${className}`}>
                 <span className={classes.decor}>
                     <span></span>
                 </span>
