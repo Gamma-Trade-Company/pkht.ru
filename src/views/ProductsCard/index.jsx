@@ -9,18 +9,18 @@ import classes from './ProductsCard.module.scss';
 const ProductsCard = () => {
     const {id} = useParams();
     const [productInfo, setProductInfo] = useState(state);
-    const {title, imgList, featureList} = productInfo;
+    const {title, imgList, featureList, loaded} = productInfo;
 
     useEffect(()=>{
         (async()=>{
             const resp = await fetch(`http://move.pkht.ru/api/catalog/product-card/${id}/`);
             const { title, imgList, featureList } = await resp.json();
-            setProductInfo({...productInfo, title, imgList, featureList});
+            setProductInfo({...productInfo, title, imgList, featureList, loaded: featureList.length !== 0});
         })();
     },[]);
 
     return (
-        featureList.length === 0 ?
+        !loaded ?
         <NotFound /> :
         <section className={classes.products__card}>
             <div className="container">
@@ -42,6 +42,7 @@ const state = {
     title: '',
     imgList: [],
     featureList: [],
+    loaded: true,
 };
 
 export default ProductsCard;
