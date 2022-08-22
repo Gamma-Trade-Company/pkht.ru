@@ -10,6 +10,8 @@ import WhereToBuy from '../../views/WhereToBuy';
 import ButtonToUp from '../UI/ButtonToUp';
 import NotFound from '../../views/NotFound';
 import Catalog from '../../views/Catalog';
+import Advantages from '../../views/Advantages';
+import About from '../../views/About';
 import DetailedCatalog from '../DetailedCatalog';
 import IndexCatalog from '../IndexCatalog';
 import ProductsCard from '../../views/ProductsCard';
@@ -47,6 +49,8 @@ export default class App extends Component {
               <Route path='product-card/:id' element={<ProductsCard/>} />
               <Route path=':id/*' element={<DetailedCatalog/>} />
             </Route>
+            <Route path='/advantages' element={<Advantages/>} />
+            <Route path='/about' element={<About/>} />
             <Route path='*' element={<NotFound/>}/>
           </Routes>
         </main>

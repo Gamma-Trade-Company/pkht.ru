@@ -1,0 +1,50 @@
+.searchBar {
+    width: 100%;
+    max-width: 384px;
+    padding: 15px;
+    background: #F3F3F3;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    overflow: hidden;
+    transition: max-width 0.3s ease-in-out;
+
+    svg {
+        min-width: 18px;
+    }
+
+    &_input {
+        width: 100%;
+        margin-left: 10px;
+        border: none;
+        background: none;
+        font-size: 16px;
+        outline: none;
+        appearance: none;
+
+        &::placeholder {
+            color: #959595;
+        }
+    }
+
+    &:not(&__mob) {
+        @media (max-width: 1200px) {
+            max-width: 48px;
+            position: absolute;
+            right: 30px;
+    
+            &:hover {
+                max-width: 384px;
+            }
+        }
+        @media (max-width: 900px) {
+            display: none;
+        }
+    }
+
+    &__mob {
+        width: 100%;
+        max-width: none;
+    }
+}

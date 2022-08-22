@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import './style.scss';
-import LogoImg from '../../assets/img/logo.png';
 import VKLogo from '../../assets/img/vk-logo.svg';
 
 class Footer extends React.Component {
@@ -26,7 +25,7 @@ class Footer extends React.Component {
         return (
             <footer className='footer'>
                 <Link to="/" className='footer_logo'>
-                    <img src={LogoImg} className='footer_logoImg' alt='' />
+                    <img src="/img/ui/logo.png" className='footer_logoImg' alt='' />
                 </Link>
                 <nav className='footer_nav'>
                     <ul className='footer_navList'>
