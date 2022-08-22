@@ -1,8 +1,6 @@
 import React from 'react';
 
 import './style.scss';
-import LeonardoImg from '../../assets/img/shop1.png';
-import GammaImg from '../../assets/img/shop2.png';
 
 class WhereToBuyLinks extends React.Component {
     constructor (props) {
@@ -14,13 +12,13 @@ class WhereToBuyLinks extends React.Component {
                     name: "Хобби-гипермаркет Леонардо",
                     url: "https://leonardo.ru/ishop/tree_9538925633/",
                     description: "Купить в розницу",
-                    img: LeonardoImg,
+                    img: "/img/shops/shop1.png",
                 },
                 {
                     name: "Фирма Гамма",
                     url: "https://firma-gamma.ru/ishop/20362990822/",
                     description: "Купить оптом",
-                    img: GammaImg,
+                    img: "/img/shops/shop2.png",
                 },
             ]
         }
