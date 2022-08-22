@@ -1,0 +1,58 @@
+.aboutPage {
+    &_img {
+        max-height: 1020px;
+        object-fit: cover;
+    }
+
+    &_layout {
+        display: flex;
+    }
+
+    &_content {
+        width: 100%;
+        max-width: 735px;
+        margin-right: auto;
+    }
+
+    &_director {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        margin-left: 24px;
+
+        &Photo {
+            img {
+                width: 160px;
+                height: 160px;
+                border-radius: 80px;
+                margin-bottom: 18px;
+            }
+        }
+
+        &Name {
+            font-size: 16px;
+            line-height: 18px;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        &Role {
+            font-size: 16px;
+            line-height: 16px;
+            color: #7D7D7D;
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        &_layout {
+            flex-direction: column;
+        }
+        &_director {
+            margin-left: 0px;
+            width: 100%;
+            margin: 0px auto 100px;
+            align-items: center;
+        }
+    }
+}

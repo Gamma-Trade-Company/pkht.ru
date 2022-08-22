@@ -9,6 +9,94 @@
     margin: 0px;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 button {
     cursor: pointer;
+}
+
+.textPage {
+    &_h3 {
+        font-size: 30px;
+        line-height: 24px;
+        margin-bottom: 16px;
+        font-weight: 700;
+    }
+
+    &_paragraph {
+        max-width: 735px;
+        font-size: 20px;
+        line-height: 27px;
+        margin-bottom: 27px;
+
+        &__bottomSpace {
+            margin-bottom: 110px;
+        }
+    }
+
+    &_list {
+        padding-left: 20px;
+
+        li {
+            font-size: 20px;
+            line-height: 27px;
+
+            &:not(:last-child) {
+                margin-bottom: 8px;
+            }
+        }
+
+        &__numeric {
+
+        }
+
+        &__bottomSpace {
+            margin-bottom: 110px;
+        }
+    }
+
+    &_img {
+        margin-bottom: 40px;
+
+        &, img {
+            border-radius: 16px;
+        }
+
+        &:not(:last-child) {
+            margin-right: 32px;
+        }
+
+        &Row {
+            display: flex;
+        }
+    }
+
+    @media (max-width:500px) {
+        &_h3 {
+            font-size: 20px;
+        }
+        
+        &_paragraph {
+            font-size: 16px;
+            line-height: 23px;
+
+            &__bottomSpace {
+                margin-bottom: 70px;
+
+            }
+        }
+
+        &_img {
+
+            &:not(:last-child) {
+                margin-right: 0px;
+            }
+
+            &Row {
+                flex-direction: column;
+            }
+        }
+    }
 }

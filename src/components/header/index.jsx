@@ -78,7 +78,7 @@ class Header extends React.Component {
                     <Link to="/" className='header_logo header_logo__mob'>
                         <img src="/img/ui/logo_mob.png" alt='' className='header_logoImg' />
                     </Link>
-                    <span class="header_mobEmptyBlock" />
+                    <span className="header_mobEmptyBlock" />
                 </header>
                 <div className={"mobileMenu" + (this.state.mobileMenuShow ? " mobileMenu__shown" : "")}>
                     <div className="mobileMenu_header">
@@ -92,21 +92,26 @@ class Header extends React.Component {
                         <Link to="/" className='header_logo header_logo__mob' onClick={()=>this.showMobMenu(false)}>
                             <img src="/img/ui/logo_mob.png" alt='' className='header_logoImg' />
                         </Link>
-                        <span class="header_mobEmptyBlock" />
+                        <span className="header_mobEmptyBlock" />
                     </div>
                     <div className="mobileMenu_content">
                         <Link className="mobileMenu_item" to="/catalog/" onClick={()=>this.showMobMenu(false)}>
                             Каталог
                         </Link>
                         {this.state.menu.map(({link, title}, i) => (
-                            <Link className="mobileMenu_item" to={link} onClick={()=>this.showMobMenu(false)}>
+                            <Link
+                                className="mobileMenu_item"
+                                to={link}
+                                onClick={()=>this.showMobMenu(false)}
+                                key={i}
+                            >
                                 {title}
                             </Link>
                         ))}
                     </div>
-                    <div className="mobileMenu_search">
+                    {/* <div className="mobileMenu_search">
                         <Search type="mobile" onSearch={()=>this.showMobMenu(false)} />
-                    </div>
+                    </div> */}
                 </div>
             </>
         );
