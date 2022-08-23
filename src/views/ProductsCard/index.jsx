@@ -13,7 +13,7 @@ const ProductsCard = () => {
 
     useEffect(()=>{
         (async()=>{
-            const resp = await fetch(`http://move.pkht.ru/api/catalog/product-card/${id}/`);
+            const resp = await fetch(`https://pkht.ru/api/catalog/product-card/${id}/`);
             const { title, imgList, featureList } = await resp.json();
             setProductInfo({...productInfo, title, imgList, featureList, loaded: featureList.length !== 0});
         })();

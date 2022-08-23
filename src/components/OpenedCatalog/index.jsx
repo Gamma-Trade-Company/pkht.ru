@@ -12,7 +12,7 @@ export default class OpenedCatalog extends Component {
     
     componentDidMount() {
 
-        fetch("http://move.pkht.ru/api/catalog/")
+        fetch("https://pkht.ru/api/catalog/")
         .then(resp=>{
             try {
                 resp.json().then(array=>{

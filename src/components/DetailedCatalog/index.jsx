@@ -13,7 +13,7 @@ const DetailedCatalog = () => {
     const { title, filterList, productList } = data;
     useEffect( () => {
         (async()=>{
-            const resp =  await fetch(`http://move.pkht.ru/api/catalog/${id}/`);
+            const resp =  await fetch(`https://pkht.ru/api/catalog/${id}/`);
             const {goods, parentCategory: {name: title}} = await resp.json();
             setData({...data, title, productList: goods});
         })();
