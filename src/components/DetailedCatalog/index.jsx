@@ -15,6 +15,9 @@ const DetailedCatalog = () => {
         (async()=>{
             const resp =  await fetch(`https://pkht.ru/api/catalog/${id}/`);
             const {goods, parentCategory: {name: title}} = await resp.json();
+            
+            document.title = title + " — Переславский комбинат художественных товаров";
+
             setData({...data, title, productList: goods});
         })();
     }, []);

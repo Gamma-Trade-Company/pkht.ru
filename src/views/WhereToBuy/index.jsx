@@ -5,6 +5,11 @@ import PageWrapper from '../../components/pageWrapper';
 import WhereToBuyLinks from '../../components/whereToBuyLinks';
 
 class WhereToBuy extends React.Component {
+
+    componentDidMount () {
+        document.title = "Где купить — Переславский комбинат художественных товаров";
+    }
+
     render () {
         return (
             <PageWrapper page="main">

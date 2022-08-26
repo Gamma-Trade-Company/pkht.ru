@@ -5,6 +5,11 @@ import './style.scss';
 import Picture from '../../components/Picture';
 
 class About extends React.Component {
+
+    componentDidMount () {
+        document.title = "О компании — Переславский комбинат художественных товаров";
+    }
+
     render = () => {
         return (
             <>

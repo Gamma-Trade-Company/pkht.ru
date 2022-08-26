@@ -3,6 +3,11 @@ import BlockHeader from '../../components/blockHeader';
 import Picture from '../../components/Picture';
 
 class Advantages extends React.Component {
+
+    componentDidMount () {
+        document.title = "Преимущества — Переславский комбинат художественных товаров";
+    }
+
     render = () => {
         return (
             <section style={{marginTop: "3.3rem"}}>

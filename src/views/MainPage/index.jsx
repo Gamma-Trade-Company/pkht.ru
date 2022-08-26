@@ -6,6 +6,11 @@ import PageWrapper from "../../components/pageWrapper/";
 import Advantages from "../../components/advantages";
 
 export default class MainPage extends Component {
+
+    componentDidMount () {
+        document.title = "Переславский комбинат художественных товаров";
+    }
+
     render() {
         return <>
             <TopBanner/>
