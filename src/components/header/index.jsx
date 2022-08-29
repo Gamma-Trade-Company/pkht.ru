@@ -66,7 +66,7 @@ class Header extends React.Component {
                             }
                         </ul>
                     </nav>
-                    {/* <Search /> */}
+                    <Search />
                     
                     <button
                         className="header_mobCatalogButton"
@@ -109,9 +109,9 @@ class Header extends React.Component {
                             </Link>
                         ))}
                     </div>
-                    {/* <div className="mobileMenu_search">
+                    <div className="mobileMenu_search">
                         <Search type="mobile" onSearch={()=>this.showMobMenu(false)} />
-                    </div> */}
+                    </div>
                 </div>
             </>
         );

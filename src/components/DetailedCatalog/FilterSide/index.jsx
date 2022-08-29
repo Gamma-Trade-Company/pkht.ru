@@ -8,7 +8,7 @@ export default class FilterSide extends Component {
             <div className={classes.filterSide}>
                 <h1 className={classes.title}>{title}</h1>
                 <div className={classes.filterSide__content}>
-                    {/* {children} */}
+                    {children}
                 </div>
             </div>
         );

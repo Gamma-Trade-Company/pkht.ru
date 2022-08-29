@@ -30,7 +30,9 @@ class Search extends React.Component {
             const { searchText } = this.state;
             this.state.searchText = "";
             this.setState(this.state, () => {
-                this.props.onSearch();
+                if (this.props.onSearch) {
+                    this.props.onSearch();
+                }
                 this.props.navigate("/search/"+searchText.replace("/", " ")+"/");
             });
         }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import Input from "../UI/Input";
 import FilterSide from "./FilterSide";
 import classes from './DetailedCatalog.module.scss';
@@ -7,22 +7,53 @@ import ProductItem from "../ProductItem";
 import { useMemo } from "react";
 import scrollAnimate from '../../utils/scrollAnimate';
 
-const DetailedCatalog = () => {
+const DetailedCatalog = (props) => {
     const { id } = useParams();
+    let { query } = useParams();
+    query = decodeURI(query);
+    
+    const location = useLocation();
+    const navigate = useNavigate();
+    
     const [data, setData] = useState(state);
     const { title, filterList, productList } = data;
-    useEffect( () => {
-        (async()=>{
-            const resp =  await fetch(`https://pkht.ru/api/catalog/${id}/`);
-            const {goods, parentCategory: {name: title}} = await resp.json();
-            
-            document.title = title + " — Переславский комбинат художественных товаров";
 
-            setData({...data, title, productList: goods});
-        })();
-    }, []);
+        
+        useEffect( () => {
+            if (props.search === true) {
+                searchQuery();
+            }
+            else {
+                (async()=>{
+                    const resp =  await fetch(`https://pkht.ru/api/catalog/${id}/`+location.search);
+                    const {goods, parentCategory: {name: title}, filters} = await resp.json();
+        
+                    filters.forEach(filter=>filter.formElem.sort((a,b)=>a.value > b.value ? 1 : -1));
+                    
+                    document.title = title + " — Переславский комбинат художественных товаров";
+        
+                    setData({...data, title, filterList: filters, productList: goods});
+                })();
+            }
+        }, []);
+
+        useEffect(()=>{
+            if (props.search === true) {
+                searchQuery();
+            }
+        }, [location]);
+
+        const searchQuery = async()=>{
+            const resp =  await fetch(`https://pkht.ru/api/search/?q=${query}`);
+            const json = await resp.json();
+
+            document.title = "\"" + query + "\" — Переславский комбинат художественных товаров";
+
+            setData({...data, title: "Поиск по \""+json.query+"\"", filterList: [], productList: json.goods});
+        }
 
     async function handlerChange({type, groupName, ...props}) {
+
         const {default: deepObjectClone} = await import('rfdc');
         const clone = deepObjectClone({proto: false});
         const clonedFilterList = clone(filterList);
@@ -30,18 +61,26 @@ const DetailedCatalog = () => {
         for (let i = 0; i < clonedFilterList.length; i++) {
             const item = clonedFilterList[i];
             if (item.name === groupName) {
+                const formElem = item.formElem.find(elem => elem.id === props.id);
+
                 if (type === 'radio') {
                    item.checkedValue = props.value;
                    item.checkedList[0] = props.id;
                    setData({...data, filterList: clonedFilterList});
                 } else {
-                    const formElem = item.formElem.find(elem => elem.id === props.id);
                     if (formElem) {
-                        formElem.checked = !formElem.checked;
-                        if (formElem.checked) {
-                            item.checkedList.push(props.id);
+
+                        let isChecked = false;
+
+                        item.checkedList.forEach(checkedName=>{
+                            if (checkedName === "filter-"+formElem.id) isChecked = true;
+                        });
+
+                        isChecked = !isChecked;
+                        if (isChecked) {
+                            item.checkedList.push(props.name);
                         } else {
-                            const indexForRemove = item.checkedList.indexOf(props.id);
+                            const indexForRemove = item.checkedList.indexOf(props.name);
                             item.checkedList.splice(indexForRemove, 1);
                         }
                         setData({...data, filterList: clonedFilterList});
@@ -49,32 +88,59 @@ const DetailedCatalog = () => {
                 }
                 
                 scrollAnimate(window, 0, 500);
+
+                getFiltredGoods(clonedFilterList);
+
                 return;
             }
         }
-
     }
 
-    const filteredProductList = useMemo(()=>{
-        let clonedProductList = [...productList];
-        filterList.forEach(({checkedList}) => {
-            clonedProductList = clonedProductList.filter(({filterList})=> {
-                if (checkedList.length === 0) return true;
-                for (let i = 0; i < checkedList.length; i++) {
-                    if (filterList.includes(checkedList[i])) return true;
+    const getFiltredGoods = async (updatedFilterList) => {
+
+        let newSearch = "";
+
+        updatedFilterList.forEach(filter=>{
+            filter.formElem.forEach(elem=>{
+                if (filter.checkedList.indexOf(elem.name) > -1) {
+                    if (newSearch) newSearch += ";";
+                    newSearch += filter.codeName + ":" + elem.value;
                 }
-                return false;
             });
         });
-        return clonedProductList;
-    }, [filterList, title]); // коммент для Костина Максима: Как появятся фильтры убрать константу title
+
+        if (newSearch) newSearch = "?filter=" + newSearch;
+
+        navigate(`/catalog/${id}/`+newSearch);
+
+        const resp =  await fetch(`https://pkht.ru/api/catalog/${id}/`+newSearch);
+        const {goods, parentCategory: {name: title}, filters} = await resp.json();
+
+        filters.forEach(filter=>filter.formElem.sort((a,b)=>a.value > b.value ? 1 : -1));
+        
+        setData({...data, filterList: filters, productList: goods});
+    }
+
+    // const filteredProductList = useMemo(()=>{
+    //     let clonedProductList = [...productList];
+    //     filterList.forEach(({checkedList}) => {
+    //         clonedProductList = clonedProductList.filter(({filterList})=> {
+    //             if (checkedList.length === 0) return true;
+    //             for (let i = 0; i < checkedList.length; i++) {
+    //                 if (filterList.includes(checkedList[i])) return true;
+    //             }
+    //             return false;
+    //         });
+    //     });
+    //     return clonedProductList;
+    // }, [filterList, title]); // коммент для Костина Максима: Как появятся фильтры убрать константу title
 
     return (
         <div className={`row ${classes.detaild__wrapper}`}>
             <FilterSide title={title}>
                 <ul className={classes.filter__list}>
                     {
-                        filterList.map(({name, type, formElem, checkedValue}) => {
+                        filterList.map(({name, type, formElem, checkedValue, checkedList, codeName}) => {
                             return (
                                 <li key={name}>
                                     <div className={classes.title}>
@@ -86,12 +152,21 @@ const DetailedCatalog = () => {
                                                 return (
                                                     <li key={elem.id}>
                                                         {
-                                                            checkedValue === undefined ?
+                                                            !checkedValue ?
                                                             <Input
                                                                 className={classes.label}
                                                                 {...elem}
                                                                 type={type}
                                                                 groupName={name}
+                                                                checked={(()=>{
+                                                                    let retirnValue = false;
+
+                                                                    checkedList.forEach(checkedName=>{
+                                                                        if (checkedName === "filter-"+codeName+elem.value) retirnValue = true;
+                                                                    });
+
+                                                                    return retirnValue;
+                                                                })()}
                                                                 onChange={handlerChange} /> :
                                                             <Input
                                                                 className={classes.label}
@@ -115,13 +190,15 @@ const DetailedCatalog = () => {
             <div className="col" style={{ marginLeft: 'auto', maxWidth: 832 }}>
                 <div className="row">
                     {
-                        filteredProductList.length !== 0 ?
-                        filteredProductList.map(item => (
-                            <div className="col-12 col-sm-6 col-md-4" key={item.link} style={{marginBottom: '3.5rem'}}>
-                                <ProductItem {...item}/>
-                            </div>                         
-                        )) :
-                        <h2>По заданным фильтрам товар не найден</h2>
+                        productList ? (
+                            productList.length !== 0 ?
+                            productList.map(item => (
+                                <div className="col-12 col-sm-6 col-md-4" key={item.link} style={{marginBottom: '3.5rem'}}>
+                                    <ProductItem {...item}/>
+                                </div>                         
+                            )) :
+                            <h2>По заданным фильтрам товар не найден</h2>
+                        ) : <h2>По заданным фильтрам товар не найден</h2>
                     }
                 </div>
             </div>

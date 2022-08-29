@@ -15,6 +15,9 @@ const ProductsCard = () => {
         (async()=>{
             const resp = await fetch(`https://pkht.ru/api/catalog/product-card/${id}/`);
             const { title, imgList, featureList } = await resp.json();
+            
+            document.title = title + " — Переславский комбинат художественных товаров";
+            
             setProductInfo({...productInfo, title, imgList, featureList, loaded: featureList.length !== 0});
         })();
     },[]);
