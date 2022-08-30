@@ -100,3 +100,30 @@ button {
         }
     }
 }
+
+.detailedCatalogMob {
+    margin-bottom: 15px !important;
+    padding: 0px 15px;
+
+    &_button {
+        background: #FBFBFB;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 300px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        font-size: 16px;
+        line-height: 16px;
+
+        svg {
+            margin-right: 10px;
+        }
+    }
+
+    @media (min-width: 861px) {
+        display: none !important;
+    }
+}

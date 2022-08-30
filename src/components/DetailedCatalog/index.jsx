@@ -6,6 +6,7 @@ import classes from './DetailedCatalog.module.scss';
 import ProductItem from "../ProductItem";
 import { useMemo } from "react";
 import scrollAnimate from '../../utils/scrollAnimate';
+import FilterIcon from "../icons/filter";
 
 const DetailedCatalog = (props) => {
     const { id } = useParams();
@@ -121,6 +122,14 @@ const DetailedCatalog = (props) => {
         setData({...data, filterList: filters, productList: goods});
     }
 
+    const showFilterMob = () => {
+        setData({...data, showFilterMob: true});
+    }
+
+    const hideFilterMob = () => {
+        setData({...data, showFilterMob: false});
+    }
+
     // const filteredProductList = useMemo(()=>{
     //     let clonedProductList = [...productList];
     //     filterList.forEach(({checkedList}) => {
@@ -137,7 +146,11 @@ const DetailedCatalog = (props) => {
 
     return (
         <div className={`row ${classes.detaild__wrapper}`}>
-            <FilterSide title={title}>
+            <FilterSide
+                title={title}
+                shown={data.showFilterMob}
+                close={hideFilterMob}
+            >
                 <ul className={classes.filter__list}>
                     {
                         filterList.map(({name, type, formElem, checkedValue, checkedList, codeName}) => {
@@ -188,6 +201,22 @@ const DetailedCatalog = (props) => {
                 </ul>
             </FilterSide>
             <div className="col" style={{ marginLeft: 'auto', maxWidth: 832 }}>
+
+                {
+                    !props.search ? (
+                        <>
+                            <div className="row detailedCatalogMob">
+                                <h3>{title}</h3>
+                            </div>
+                            <div className="row detailedCatalogMob">
+                                <button className="detailedCatalogMob_button" type="button" onClick={showFilterMob}>
+                                    <FilterIcon />
+                                    Фильтры
+                                </button>
+                            </div>
+                        </>
+                    ) : ""
+                }
                 <div className="row">
                     {
                         productList ? (
@@ -210,273 +239,7 @@ const state = {
     title: '',
     filterList: [],
     productList: [],
+    showFilterMob: false
 }
 
 export default DetailedCatalog;
-
-// Структура JSON объекта приходящего с сервера
-// {
-//     title: 'Краски',
-//     filterList: [
-//         {
-//             name: 'Наличие',
-//             type: 'radio',
-//             checkedValue: 0,
-//             checkedList: [
-//                 // 'filter-paramnal0'
-//             ],
-//             formElem: [
-//                 {
-//                     id: 'filter-paramnal0',
-//                     name: 'filter-shop',
-//                     value: 0,
-//                     label: 'Все товары',
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filter-paramnal1',
-//                     name: 'filter-shop',
-//                     value: 1,
-//                     label: 'В наличии',
-//                     disabled: false,
-//                 },
-//             ],
-//         },
-//         {
-//             name: 'Новинки',
-//             type: 'radio',
-//             checkedValue: null,
-//             checkedList: [],
-//             formElem: [
-//                 {
-//                     id: 'filterchecknovinki:1',
-//                     name: 'novinki',
-//                     value: 1,
-//                     label: '1 месяц',
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filterchecknovinki:2',
-//                     name: 'novinki',
-//                     value: 2,
-//                     label: '2 месяца',
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filterchecknovinki:3',
-//                     name: 'novinki',
-//                     value: 3,
-//                     label: '3 месяца',
-//                     disabled: false,
-//                 },
-//             ],
-//         },
-//         {
-//             name: 'Эффект',
-//             type: 'checkbox',
-//             checkedList: [],
-//             formElem: [
-//                 {
-//                     id: 'filtercheckeffect:635',
-//                     name: 'effect',
-//                     value: '635',
-//                     label: 'без эффекта',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filtercheckeffect:4887',
-//                     name: 'effect',
-//                     value: '4887',
-//                     label: 'велюр',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filtercheckeffect:642',
-//                     name: 'effect',
-//                     value: '642',
-//                     label: 'глянцевый',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filtercheckeffect:649',
-//                     name: 'effect',
-//                     value: '649',
-//                     label: 'грифельная доска',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filtercheckeffect:647',
-//                     name: 'effect',
-//                     value: '647',
-//                     label: 'иридисцентный',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//             ],
-//         },
-//         {
-//             name: 'Назначение',
-//             type: 'checkbox',
-//             checkedList: [],
-//             formElem: [
-//                 {
-//                     id: 'filterchecknaznachenie:5235',
-//                     name: 'naznachenie',
-//                     value: '5235',
-//                     label: 'декоративные',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filterchecknaznachenie:804',
-//                     name: 'naznachenie',
-//                     value: '804',
-//                     label: 'для декорирования',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filterchecknaznachenie:2627',
-//                     name: 'naznachenie',
-//                     value: '2627',
-//                     label: 'для декупажа',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filterchecknaznachenie:803',
-//                     name: 'naznachenie',
-//                     value: '803',
-//                     label: 'для рисования',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//                 {
-//                     id: 'filterchecknaznachenie:808',
-//                     name: 'naznachenie',
-//                     value: '808',
-//                     label: 'для творчества',
-//                     checked: false,
-//                     disabled: false,
-//                 },
-//             ],
-//         },
-//     ],
-//     productList: [
-//         {
-//             img: '/img/products/1.jpg',
-//             title: '"Love2art" Краска для ткани FAP-60 60 мл',
-//             link: '/products-card/1',
-//             price: '395 ₽/шт',
-//             filterList: [
-//                 'filter-paramnal0',
-//                 'filterchecknovinki:1',
-//                 'filtercheckeffect:4887',
-//                 'filterchecknaznachenie:5235',
-//             ],
-//         },
-//         {
-//             img: '/img/products/2.jpg',
-//             title: '"Love2art" Краска по стеклу и фарфору GPP-30 30 мл',
-//             link: '/products-card/2',
-//             price: '301 ₽/шт',
-//             filterList: [
-//                 'filter-paramnal0',
-//                 'filter-paramnal1',
-//                 'filterchecknovinki:2',
-//                 'filtercheckeffect:635',
-//                 'filterchecknaznachenie:804',
-//             ],
-//         },
-//         {
-//             img: '/img/products/3.jpg',
-//             title: '"Love2art" морилка LAS-80 80 мл',
-//             link: '/products-card/3',
-//             price: '391 ₽/шт',
-//             filterList: [
-//                 'filter-paramnal0',
-//                 'filterchecknovinki:3',
-//                 'filtercheckeffect:642',
-//                 'filterchecknaznachenie:2627',
-//             ],
-//         },
-//         {
-//             img: '/img/products/1.jpg',
-//             title: '"Love2art" Краска для ткани FAP-60 60 мл',
-//             link: '/products-card/4',
-//             price: '395 ₽/шт',
-//             filterList: [
-//                 'filter-paramnal0',
-//                 'filterchecknovinki:1',
-//                 'filtercheckeffect:4887',
-//                 'filterchecknaznachenie:5235',
-//             ],
-//         },
-//         {
-//             img: '/img/products/2.jpg',
-//             title: '"Love2art" Краска по стеклу и фарфору GPP-30 30 мл',
-//             link: '/products-card/5',
-//             price: '301 ₽/шт',
-//             filterList: [
-//                 'filter-paramnal0',
-//                 'filter-paramnal1',
-//                 'filterchecknovinki:2',
-//                 'filtercheckeffect:635',
-//                 'filterchecknaznachenie:804',
-//             ],
-//         },
-//         {
-//             img: '/img/products/3.jpg',
-//             title: '"Love2art" морилка LAS-80 80 мл',
-//             link: '/products-card/6',
-//             price: '391 ₽/шт',
-//             filterList: [
-//                 'filter-paramnal0',
-//                 'filterchecknovinki:3',
-//                 'filtercheckeffect:642',
-//                 'filterchecknaznachenie:2627',
-//             ],
-//         },
-//         {
-//             img: '/img/products/1.jpg',
-//             title: '"Love2art" Краска для ткани FAP-60 60 мл',
-//             link: '/products-card/7',
-//             price: '395 ₽/шт',
-//             filterList: [
-//                 'filter-paramnal0',
-//                 'filterchecknovinki:1',
-//                 'filtercheckeffect:4887',
-//                 'filterchecknaznachenie:5235',
-//             ],
-//         },
-//         {
-//             img: '/img/products/2.jpg',
-//             title: '"Love2art" Краска по стеклу и фарфору GPP-30 30 мл',
-//             link: '/products-card/8',
-//             price: '301 ₽/шт',
-//             filterList: [
-//                 'filter-paramnal0',
-//                 'filter-paramnal1',
-//                 'filterchecknovinki:2',
-//                 'filtercheckeffect:635',
-//                 'filterchecknaznachenie:804',
-//             ],
-//         },
-//         {
-//             img: '/img/products/3.jpg',
-//             title: '"Love2art" морилка LAS-80 80 мл',
-//             link: '/products-card/9',
-//             price: '391 ₽/шт',
-//             filterList: [
-//                 'filter-paramnal0',
-//                 'filterchecknovinki:3',
-//                 'filtercheckeffect:642',
-//                 'filterchecknaznachenie:2627',
-//             ],
-//         },
-//     ],
-// }
