@@ -18,13 +18,13 @@ class Header extends React.Component {
                     link: "/advantages/",
                     title: "Преимущества"
                 },
-                // {
-                //     link: "/reviews/",
-                //     title: "Отзывы"
-                // },
                 {
                     link: "/about/",
                     title: "О компании"
+                },
+                {
+                    link: "/vacances/",
+                    title: "Вакансии"
                 },
                 {
                     link: "/where-to-buy/",
@@ -60,7 +60,10 @@ class Header extends React.Component {
                             {
                                 this.state.menu.map(({link, title}, i) => (
                                     <li className='header_navItem' key={i}>
-                                        <Link className='header_navLink' to={link}>{title}</Link>
+                                        {
+                                            link === '/vacances/' ? <a href={link} className='header_navLink'>{title}</a> :
+                                            <Link className='header_navLink' to={link}>{title}</Link>
+                                        }
                                     </li>
                                 ))
                             }
@@ -99,14 +102,23 @@ class Header extends React.Component {
                             Каталог
                         </Link>
                         {this.state.menu.map(({link, title}, i) => (
-                            <Link
-                                className="mobileMenu_item"
-                                to={link}
+                            link === '/vacances/' ? 
+                            <a 
+                                href={link}
                                 onClick={()=>this.showMobMenu(false)}
+                                className="mobileMenu_item"
                                 key={i}
-                            >
-                                {title}
-                            </Link>
+                                >
+                                    {title}
+                                </a> :
+                            <Link
+                            className="mobileMenu_item"
+                            to={link}
+                            onClick={()=>this.showMobMenu(false)}
+                            key={i}
+                        >
+                            {title}
+                        </Link>
                         ))}
                     </div>
                     <div className="mobileMenu_search">

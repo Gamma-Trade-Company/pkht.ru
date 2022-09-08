@@ -44,7 +44,7 @@ class Footer extends React.Component {
                             <img src={VKLogo} alt='' className='footer_socialImg' />
                         </a> */}
                     </div>
-                    <p className='footer_copyright'>© 2022 Дискриптор</p>
+                    <p className='footer_copyright'>© {new Date().getFullYear()} ООО "Аква плюс"</p>
                 </div>
             </footer>
         );
