@@ -26,8 +26,12 @@ export default function FormFeedback() {
     async function handleSubmit(e) {
         e.preventDefault();
         const isValidFlag = isValidForm(state, setState);
+        const scrollDistance =  formElem.current ? 
+                formElem.current.getBoundingClientRect().top + window.pageYOffset - 120 :
+                0;
         if (!isValidFlag || !state.agreementChecked) {
             setState(state => ({...state, isValidFormFlag: isValidFlag, afterSubmitting: 'none'}));
+            if (state.agreementChecked) scrollAnimate(window, scrollDistance, 500);
             return;
         }
 
@@ -50,6 +54,8 @@ export default function FormFeedback() {
         } catch (error) {
             setState(state => ({...state, afterSubmitting: 'error'}));
             console.log(error);
+        } finally {
+            scrollAnimate(window, scrollDistance, 500);
         }
     }
 
@@ -119,12 +125,7 @@ export default function FormFeedback() {
                 onChange={handleChangeArea}
                 >
             </textarea>
-            <Button className="btn__submit" type="submit" onClick={()=>{
-                const scrollDistance =  formElem.current ? 
-                formElem.current.getBoundingClientRect().top + window.pageYOffset - 120 :
-                0;
-                scrollAnimate(window, scrollDistance, 500);
-            }}>Отправить</Button>
+            <Button className="btn__submit" type="submit">Отправить</Button>
             {
                 !state.agreementChecked ? 
                 <InfoBlock className="form__offer-warning" warning>

@@ -37,7 +37,7 @@ export default function FromOffer() {
         const isValidFlag = isValidForm(state, setState);
         if (!isValidFlag || !state.agreementChecked) {
             setState(state => ({...state, isValidFormFlag: isValidFlag, afterSubmitting: 'none'}));
-            scrollAnimate(window, 0, 500);
+            if (state.agreementChecked) scrollAnimate(window, 0, 500);
             return;
         }
 
@@ -60,8 +60,10 @@ export default function FromOffer() {
         } catch (error) {
             setState(state => ({...state, afterSubmitting: 'error'}));
             console.log(error);
+        } finally {
+            scrollAnimate(window, 0, 500);
         }
-        scrollAnimate(window, 0, 500);
+        
     }
 
     function resetForm() {
@@ -88,8 +90,9 @@ export default function FromOffer() {
             }
         });
 
-        setState({...state, inputs: newInputs});
-        return !newInputs.some(({warning}) => warning);
+        setState({...state, inputs: newInputs, areaWarning: !Boolean(state.areaValue.trim())});
+
+        return !(newInputs.some(({warning}) => warning) || !Boolean(state.areaValue.trim()));
     }
 
     return (
@@ -146,8 +149,8 @@ export default function FromOffer() {
             <p className="conditions__title">
                 Укажите, какие специальные условия вы предлагаете нашему производству
             </p>
-            <textarea 
-                className="conditions__textarea"
+            <textarea
+                className={state.areaWarning ? `conditions__textarea warning` : 'conditions__textarea'}
                 name="desc"
                 value={state.areaValue}
                 onChange={handleChangeArea} ></textarea>
@@ -252,6 +255,7 @@ const stateTemplate = {
         },
     ],
     areaValue: '',
+    areaWarning: false,
     agreementChecked: true,
     isValidFormFlag: true,
     afterSubmitting: 'none'

@@ -50,6 +50,10 @@
         &:focus {
             outline: 1px solid #755fa0;
         }
+
+        &.warning {
+            outline: 1px solid #FF5757;
+        }
     }
 
     .btn__submit {
