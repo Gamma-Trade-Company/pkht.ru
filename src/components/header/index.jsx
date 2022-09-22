@@ -24,12 +24,17 @@ class Header extends React.Component {
                 },
                 {
                     link: "/vacances/",
-                    title: "Вакансии"
+                    title: "Вакансии",
+                    nativeLink: true,
                 },
                 {
                     link: "/where-to-buy/",
                     title: "Где купить"
-                }
+                },
+                {
+                    link: "/feedback/",
+                    title: "Обратная связь"
+                },
             ],
             mobileMenuShow: false
         }
@@ -58,10 +63,10 @@ class Header extends React.Component {
                     <nav className='header_nav'>
                         <ul className='header_navList'>
                             {
-                                this.state.menu.map(({link, title}, i) => (
+                                this.state.menu.map(({link, title, nativeLink}, i) => (
                                     <li className='header_navItem' key={i}>
                                         {
-                                            link === '/vacances/' ? <a href={link} className='header_navLink'>{title}</a> :
+                                            nativeLink ? <a href={link} className='header_navLink'>{title}</a> :
                                             <Link className='header_navLink' to={link}>{title}</Link>
                                         }
                                     </li>
@@ -101,8 +106,8 @@ class Header extends React.Component {
                         <Link className="mobileMenu_item" to="/catalog/" onClick={()=>this.showMobMenu(false)}>
                             Каталог
                         </Link>
-                        {this.state.menu.map(({link, title}, i) => (
-                            link === '/vacances/' ? 
+                        {this.state.menu.map(({link, title, nativeLink}, i) => (
+                            nativeLink ? 
                             <a 
                                 href={link}
                                 onClick={()=>this.showMobMenu(false)}

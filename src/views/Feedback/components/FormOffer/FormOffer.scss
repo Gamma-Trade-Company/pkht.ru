@@ -1,0 +1,77 @@
+.form__offer {
+    width: 100%;
+    max-width: 448px;
+    border-bottom: 1px solid transparent;
+
+    .form__offer-warning {
+        margin-top: 1rem;
+    }
+
+    .input__form {
+        margin-top: 2rem;
+    }
+
+    .radio__wrap {
+        &:first-of-type {
+            margin-top: 2.5rem;
+        }
+
+        margin-top: 2rem;
+
+        .radio__inputs {
+            margin-top: 1rem;
+            display: flex;
+            width: auto;
+            margin-left: -1rem;
+            margin-right: -1rem;
+
+            & > * {
+                margin-left: 1rem;
+                width: auto;
+            }
+        }
+    }
+
+    .conditions__title {
+        margin-top: 2.5rem;
+    }
+
+    .conditions__textarea {
+        width: 100%;
+        min-height: 141px;
+        border-radius: 8px;
+        resize: none;
+        background-color: #F8F8F8;
+        margin-top: 1rem;
+        border: none;
+        padding: 1rem;
+        font-size: 14px;
+
+        &:focus {
+            outline: 1px solid #755fa0;
+        }
+    }
+
+    .btn__submit {
+        max-width: 165px;
+        margin-top: 3.5rem;
+    }
+
+    .agreement__wrap {
+        margin-top: 2.5rem;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        
+        .agreement__checkbox {
+            width: 15px;
+            height: 15px;
+        }
+
+        .agreement__text {
+            font-size: 0.875rem;
+            line-height: 18px;
+            color: #7D7D7D;
+        }
+    }
+}

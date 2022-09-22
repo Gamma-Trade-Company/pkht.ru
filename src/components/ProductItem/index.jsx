@@ -18,7 +18,7 @@ export default class ProductItem extends Component {
                 className={`${className !== undefined ? className : ''} ${classes.card}`}
                 >
                 <img src={img} alt="" />
-                <p className={classes.price} dangerouslySetInnerHTML={{__html: price}} />
+                <p className={classes.price} />
                 <p className={classes.title}>
                     {title}
                 </p>

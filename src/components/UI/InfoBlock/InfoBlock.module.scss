@@ -1,0 +1,11 @@
+.infoBlock {
+    font-weight: 600;
+    padding: 2rem;
+    border-radius: 8px;
+    background: #FFFEF1;
+    color: #2d7c3a;
+
+    &.warning {
+        color: #FF5757;
+    }
+}

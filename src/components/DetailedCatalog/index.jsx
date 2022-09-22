@@ -18,7 +18,6 @@ const DetailedCatalog = (props) => {
     
     const [data, setData] = useState(state);
     const { title, filterList, productList } = data;
-
         
         useEffect( () => {
             if (props.search === true) {
