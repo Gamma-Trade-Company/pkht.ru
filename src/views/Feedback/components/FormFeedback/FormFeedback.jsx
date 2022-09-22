@@ -164,6 +164,13 @@ const stateTemplate = {
         },
         {
             value: '',
+            placeholder: 'E-mail',
+            type: 'email',
+            warning: false,
+            name: 'email',
+        },
+        {
+            value: '',
             placeholder: 'Телефон',
             type: 'tel',
             warning: false,
