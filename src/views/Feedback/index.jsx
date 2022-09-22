@@ -7,7 +7,7 @@ export default function Feedback() {
     return (
         <section style={{ marginTop: '3.3rem' }}>
             <div className="container">
-                <h1 className={classes.title}>Обратная связь</h1>
+                <h1 className={classes.title}>Обратная связь от потребителей / отзывы про товар</h1>
                 <Accordion
                     summary="Предложение сырья и комплектующих"
                     className={classes.accordion}>

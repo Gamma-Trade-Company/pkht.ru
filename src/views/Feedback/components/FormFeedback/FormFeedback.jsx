@@ -162,6 +162,13 @@ const stateTemplate = {
             warning: false,
             name: 'name',
         },
+        {
+            value: '',
+            placeholder: 'Телефон',
+            type: 'tel',
+            warning: false,
+            name: 'phone',
+        },
     ],
     areaValue: '',
     areaWarning: false,
