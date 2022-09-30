@@ -1,0 +1,63 @@
+.form__feedback {
+    width: 100%;
+    max-width: 448px;
+    border-bottom: 1px solid transparent;
+
+    .form__offer-warning {
+        margin-top: 1rem;
+    }
+
+    .input__form {
+        margin-top: 2rem;
+    }
+
+    .textarea__form {
+        width: 100%;
+        min-height: 141px;
+        border-radius: 8px;
+        resize: none;
+        background-color: #F8F8F8;
+        margin-top: 2.5rem;
+        border: none;
+        padding: 1rem;
+        font-size: 14px;
+
+        &::placeholder {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            color: #858585;
+        }
+
+        &:focus {
+            outline: 1px solid #755fa0;
+        }
+
+        &.warning {
+            outline: 1px solid #FF5757;
+        }
+    }
+
+    .btn__submit {
+        max-width: 165px;
+        margin-top: 3.5rem;
+    }
+
+    .agreement__wrap {
+        margin-top: 2.5rem;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        
+        .agreement__checkbox {
+            width: 15px;
+            height: 15px;
+        }
+
+        .agreement__text {
+            font-size: 0.875rem;
+            line-height: 18px;
+            color: #7D7D7D;
+        }
+    }
+}

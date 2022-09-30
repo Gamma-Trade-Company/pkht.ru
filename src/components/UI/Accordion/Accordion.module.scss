@@ -1,0 +1,32 @@
+.accordion {
+    .summary {
+        cursor: pointer;
+        user-select: none;
+        display: block;
+        width: 100%;
+        position: relative;
+        font-weight: 600;
+        font-size: 1.25rem;
+        line-height: 29px;
+        padding-right: 30px;
+
+        &::before {
+            display: block;
+            content: '';
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%) rotateX(0);
+            transition: all ease-in-out 300ms;
+            background: url(./img/arrow.svg) no-repeat center/contain;
+        }
+
+        &.active {
+            &::before {
+                transform: translateY(-50%) rotateX(-180deg);
+            }
+        }
+    }
+}

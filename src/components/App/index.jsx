@@ -16,6 +16,7 @@ import DetailedCatalog from '../DetailedCatalog';
 import IndexCatalog from '../IndexCatalog';
 import ProductsCard from '../../views/ProductsCard';
 import SearchView from '../../views/Search';
+import Feedback from '../../views/Feedback';
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -54,6 +55,7 @@ export default class App extends Component {
             <Route path='/search/:query' element={<SearchView />} />
             <Route path='/advantages' element={<Advantages/>} />
             <Route path='/about' element={<About/>} />
+            <Route path='/feedback' element={<Feedback/>} />
             <Route path='*' element={<NotFound/>}/>
           </Routes>
         </main>
