@@ -20,6 +20,12 @@ class WhereToBuyLinks extends React.Component {
                     description: "Купить оптом",
                     img: "/img/shops/shop2.png",
                 },
+                {
+                    name: "Сеть магазинов «Иголочка»",
+                    url: "https://www.igla.ru/",
+                    description: "Купить в розницу",
+                    img: "/img/shops/shop3.png",
+                },
             ]
         }
     }

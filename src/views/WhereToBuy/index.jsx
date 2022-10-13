@@ -13,7 +13,7 @@ class WhereToBuy extends React.Component {
     render () {
         return (
             <PageWrapper page="main">
-                <BlockHeader>Где купить?</BlockHeader>
+                <BlockHeader>Где купить</BlockHeader>
                 <WhereToBuyLinks />
                 <ContactsBlock />
             </PageWrapper>

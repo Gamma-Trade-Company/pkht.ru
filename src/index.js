@@ -6,18 +6,16 @@ import App from './components/App';
 
 const rootElement = document.getElementById("root");
 const cRoot = createRoot(rootElement);
-const hRoot = hydrateRoot(rootElement);
+// const hRoot = hydrateRoot(rootElement);
 
 const reactApp = () => (
-  <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
 );
 
 if (rootElement.hasChildNodes()) {
-  hRoot.render(reactApp());
+  hydrateRoot(rootElement, reactApp());
 } else {
   cRoot.render(reactApp());
 }

@@ -4,6 +4,7 @@ import ProductsBlock from "../../components/productsBlock";
 import TopBanner from "../../components/TopBanner";
 import PageWrapper from "../../components/pageWrapper/";
 import Advantages from "../../components/advantages";
+import Certificates from "../../components/Certificates";
 
 export default class MainPage extends Component {
 
@@ -17,6 +18,7 @@ export default class MainPage extends Component {
 
             <PageWrapper page="main">
                 <Advantages />
+                <Certificates/>
                 <ProductsBlock />
                 <ContactsBlock />
             </PageWrapper>
