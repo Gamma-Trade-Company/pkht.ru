@@ -69,11 +69,7 @@ export default function FromOffer() {
     function resetForm() {
         const {inputs, radioBtns} = state;
         const newInputs = inputs.map(input => (
-<<<<<<< HEAD
-            {...input, value: '', warning: false}
-=======
             {...input, warning: false, value: ''}
->>>>>>> dad39a7dc219941985763f944396eeaa3c37e6c3
         ));
         const newRadioBtns = radioBtns.map(radioBtn => (
             {...radioBtn, checkedValue: '1'}
