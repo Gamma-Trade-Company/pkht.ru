@@ -79,7 +79,11 @@ export default function FormFeedback() {
     function resetForm() {
         const {inputs} = state;
         const newInputs = inputs.map(input => (
+<<<<<<< HEAD
             {...input, value: '', warning: false}
+=======
+            {...input, warning: false, value: ''}
+>>>>>>> dad39a7dc219941985763f944396eeaa3c37e6c3
         ));
 
         setState(state => ({...state, inputs: newInputs, areaValue: ''}));
