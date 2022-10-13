@@ -71,7 +71,7 @@ export default function FormFeedback() {
             }
         });
 
-        setState({...state, inputs: newInputs, areaWarning: !Boolean(state.areaValue.trim())});
+        setState(state => ({...state, inputs: newInputs, areaWarning: !Boolean(state.areaValue.trim())}));
 
         return !(newInputs.some(({warning}) => warning) || !Boolean(state.areaValue.trim()));
     }
@@ -79,7 +79,7 @@ export default function FormFeedback() {
     function resetForm() {
         const {inputs} = state;
         const newInputs = inputs.map(input => (
-            {...input, value: ''}
+            {...input, value: '', warning: false}
         ));
 
         setState(state => ({...state, inputs: newInputs, areaValue: ''}));

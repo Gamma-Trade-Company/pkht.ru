@@ -69,12 +69,12 @@ export default function FromOffer() {
     function resetForm() {
         const {inputs, radioBtns} = state;
         const newInputs = inputs.map(input => (
-            {...input, value: ''}
+            {...input, value: '', warning: false}
         ));
         const newRadioBtns = radioBtns.map(radioBtn => (
             {...radioBtn, checkedValue: '1'}
         ));
-
+        
         setState(state => ({...state, inputs: newInputs, radioBtns: newRadioBtns, areaValue: ''}));
     }
 
@@ -90,7 +90,7 @@ export default function FromOffer() {
             }
         });
 
-        setState({...state, inputs: newInputs, areaWarning: !Boolean(state.areaValue.trim())});
+        setState(state => ({...state, inputs: newInputs, areaWarning: !Boolean(state.areaValue.trim())}));
 
         return !(newInputs.some(({warning}) => warning) || !Boolean(state.areaValue.trim()));
     }
