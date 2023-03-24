@@ -14,6 +14,11 @@ class Footer extends React.Component {
                 {
                     name: "Где купить",
                     path: "/where-to-buy"
+                },
+                {
+                    name: "Статьи",
+                    path: "/articles",
+                    nativeLink: true,
                 }
             ]
         }
@@ -32,7 +37,11 @@ class Footer extends React.Component {
                         {
                             nav.map((item, i)=> (
                                 <li className='footer_navItem' key={i}>
-                                    <Link to={item.path} className='footer_navLink'>{item.name}</Link>
+                                    {
+                                        item.nativeLink ? 
+                                        <a href={item.path} className='footer_navLink'>{item.name}</a> :
+                                        <Link to={item.path} className='footer_navLink'>{item.name}</Link>
+                                    }
                                 </li>
                             ))
                         }
