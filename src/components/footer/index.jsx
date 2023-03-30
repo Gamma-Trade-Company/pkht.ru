@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import './style.scss';
-import VKLogo from '../../assets/img/vk-logo.svg';
 
 class Footer extends React.Component {
 
@@ -13,11 +12,11 @@ class Footer extends React.Component {
             nav: [
                 {
                     name: "Где купить",
-                    path: "/where-to-buy"
+                    path: "/where-to-buy/"
                 },
                 {
                     name: "Статьи",
-                    path: "/articles",
+                    path: "/articles/",
                     nativeLink: true,
                 }
             ]
