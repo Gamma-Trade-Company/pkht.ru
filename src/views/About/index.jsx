@@ -71,13 +71,13 @@ class About extends React.Component {
                             </div>
                             <div className="aboutPage_director">
                                 <Picture
-                                    src="/img/about/director"
-                                    ext={["png"]}
+                                    src="/img/about/directorpkht"
+                                    ext={["jpg"]}
                                     alt=""
                                     className="aboutPage_directorPhoto"
                                 />
-                                <h3 className="aboutPage_directorName">Филиппов 
-Андрей&nbsp;Александрович</h3>
+                                <h3 className="aboutPage_directorName">Парамонов 
+                                Григорий&nbsp;Владимирович</h3>
                                 <p className="aboutPage_directorRole">Директор</p>
                             </div>
                         </div>
