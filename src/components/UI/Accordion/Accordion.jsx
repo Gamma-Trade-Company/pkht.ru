@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import toggleSlide from '../../../utils/toggleSlide';
 import classes from './Accordion.module.scss';
 
@@ -8,6 +9,7 @@ export default function Accordion({
     summary,
     summaryClass,
     bodyClass,
+    id,
     open,
     duration = 300 }) {
 
@@ -15,11 +17,18 @@ export default function Accordion({
     const [firstRender, setFirstRender] = useState(true);
     const bodyOfAccorion = useRef(null);
 
+    const navigate = useNavigate();
+
     function handleClick({target}) {
         setCollapse(prevState => !prevState);
+        const {id} = target;
         if (target.classList.contains(classes.active)) {
             target.classList.remove(classes.active);
+            navigate(`/feedback/`);
         } else {
+            if (id) {
+                navigate(`/feedback/#${id}`);
+            }
             target.classList.add(classes.active);
         }
     }
@@ -29,8 +38,14 @@ export default function Accordion({
         if (!firstRender) {
             toggleSlide(current, collapse, duration);
         }
-        setFirstRender(false);
+        if (firstRender) {
+            setFirstRender(false);
+        }
     }, [collapse]);
+    
+    let classesStringSummary = !summaryClass ? classes.summary :
+    `${classes.summary} ${summaryClass} `;
+    if (!collapse) classesStringSummary += (' ' + classes.active);
     
     return (
         <div
@@ -38,9 +53,8 @@ export default function Accordion({
                 !className ? classes.accordion :
                     `${classes.accordion} ${className}`}>
             <div
-                className={
-                    !summaryClass ? classes.summary :
-                        `${classes.summary} ${summaryClass}`}
+                id={id}
+                className={classesStringSummary}
                 onClick={handleClick}>
                 {summary}
             </div>

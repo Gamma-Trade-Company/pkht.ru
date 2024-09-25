@@ -13,6 +13,8 @@
         border: none;
         font-size: 14px;
         color: #2C2C2C;
+        outline: none;
+        border: 1px solid transparent;
 
         &::placeholder {
             font-weight: 400;
@@ -22,11 +24,11 @@
         }
 
         &:focus {
-            outline: 1px solid #755fa0;
+            border-color: #755fa0;
         }
 
         &.warning {
-            outline: 1px solid #FF5757;
+            border-color: #FF5757;
         }
 
 
