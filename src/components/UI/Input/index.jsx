@@ -4,20 +4,23 @@ import ReactInputMask from "react-input-mask";
 
 export default class Input extends Component {
     render() {
-        const {label, id, onChange, className, type} = this.props;
-        const {warning, ...props} = this.props
+        const {label, id, onChange, className, type, mask = '+7 (999) 999 99 99', formatChars} = this.props;
+        const {warning, datarequired, ...props} = this.props;
         delete props.label;
         delete props.groupName;
         return (
             <>
                 {
-                    type === 'tel' ? 
+                    type === 'tel' || className?.includes('counter-mask')? 
                     <ReactInputMask 
-                        mask="+7 (999) 999 99 99"
+                        mask={mask}
                         {...props}
                         onChange={e=>onChange(this.props, e)}
                         className={`${className ? className : ''} ${classes.input} ${warning ? classes.warning : ''}`} /> : 
-                    <input 
+                    type === 'textarea' ? <textarea {...props}
+                    className={`${className ? className : ''} ${classes.textarea} ${warning ? classes.warning : ''}`}
+                    onChange={e=>onChange(this.props, e)} ></textarea>
+                    : <input 
                     {...props}
                     className={`${className ? className : ''} ${classes.input} ${warning ? classes.warning : ''}`}
                     onChange={e=>onChange(this.props, e)} />

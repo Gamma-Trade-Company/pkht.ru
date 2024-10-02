@@ -118,3 +118,33 @@
     }
 
 }
+
+.textarea {
+    width: 100%;
+    max-width: 544px;
+    display: block;
+    height: 80px;
+    background: #F8F8F8;
+    border-radius: 8px;
+    padding: 1rem;
+    border: none;
+    font-size: 14px;
+    color: #2C2C2C;
+    outline: none;
+    border: 1px solid transparent;
+
+        &::placeholder {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            color: #858585;
+        }
+
+        &:focus {
+            border-color: #755fa0;
+        }
+
+        &.warning {
+            border-color: #FF5757;
+        }
+}

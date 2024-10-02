@@ -1,0 +1,48 @@
+.radio__inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: .5em;
+    margin: 2em 0;
+
+    label {
+        grid-row: 1;
+        align-items: start;
+        font-weight: 500;
+    }
+
+}
+
+.subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgb(56, 55, 55);
+    margin-bottom: .5em;
+
+    a {
+        color: blue;
+    }
+}
+.btn__submit {
+    max-width: 165px;
+    margin: 2em 0;
+}
+
+.agreement__wrap {
+   display: flex;
+   align-items: baseline;
+   
+   label {
+    margin-right: .3em;
+   }
+
+   .agreement__text {
+    font-size: 0.875rem;
+    line-height: 18px;
+    color: #7D7D7D;
+   }
+}
+
+.input__form {
+    margin-bottom: 1.5em;
+}

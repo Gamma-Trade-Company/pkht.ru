@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import Input from "../../../../components/UI/Input";
 import Button from "../../../../components/UI/Button";
-import scrollAnimate from '../../../../utils/scrollAnimate';
 import InfoBlock from "../../../../components/UI/InfoBlock";
 import './FormFeedback.scss';
 
@@ -31,7 +30,6 @@ export default function FormFeedback() {
                 0;
         if (!isValidFlag || !state.agreementChecked) {
             setState(state => ({...state, isValidFormFlag: isValidFlag, afterSubmitting: 'none'}));
-            if (state.agreementChecked) scrollAnimate(window, scrollDistance, 500);
             return;
         }
 
@@ -54,8 +52,6 @@ export default function FormFeedback() {
         } catch (error) {
             setState(state => ({...state, afterSubmitting: 'error'}));
             console.log(error);
-        } finally {
-            scrollAnimate(window, scrollDistance, 500);
         }
     }
 
@@ -114,6 +110,7 @@ export default function FormFeedback() {
                         {...props} 
                         className="input__form"
                         key={props.name}
+                        mask={props.mask}
                         onChange={handleChang} />
                 ))
             }
@@ -175,6 +172,7 @@ const stateTemplate = {
             type: 'tel',
             warning: false,
             name: 'phone',
+            mask: '+7 (999) 999 99 99',
         },
     ],
     areaValue: '',

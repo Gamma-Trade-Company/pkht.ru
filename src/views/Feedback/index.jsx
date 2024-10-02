@@ -1,6 +1,7 @@
 import Accordion from "../../components/UI/Accordion";
 import FormFeedback from "./components/FormFeedback/FormFeedback";
 import FormOffer from "./components/FormOffer/FormOffer";
+import FormOrder from "./components/FormOrder";
 import classes from './feedback.module.scss';
 
 export default function Feedback() {
@@ -21,6 +22,13 @@ export default function Feedback() {
                     open={window.location.hash.replace('#', '') === 'anchor-form-feedback'}
                     className={classes.accordion}>
                       <FormFeedback/>
+                </Accordion>
+                <Accordion
+                    summary="Заказ товара под СТМ"
+                    id="anchor-form-order-product"
+                    open={window.location.hash.replace('#', '') === 'anchor-form-order-product'}
+                    className={classes.accordion}>
+                     <FormOrder/>
                 </Accordion>
             </div>
         </section>

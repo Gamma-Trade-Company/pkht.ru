@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Button from "../../../../components/UI/Button";
 import Input from "../../../../components/UI/Input";
-import scrollAnimate from '../../../../utils/scrollAnimate';
 import InfoBlock from "../../../../components/UI/InfoBlock";
 import './FormOffer.scss';
 
@@ -37,7 +36,6 @@ export default function FromOffer() {
         const isValidFlag = isValidForm(state, setState);
         if (!isValidFlag || !state.agreementChecked) {
             setState(state => ({...state, isValidFormFlag: isValidFlag, afterSubmitting: 'none'}));
-            if (state.agreementChecked) scrollAnimate(window, 0, 500);
             return;
         }
 
@@ -60,8 +58,6 @@ export default function FromOffer() {
         } catch (error) {
             setState(state => ({...state, afterSubmitting: 'error'}));
             console.log(error);
-        } finally {
-            scrollAnimate(window, 0, 500);
         }
         
     }
@@ -138,6 +134,7 @@ export default function FromOffer() {
                                     {...props}
                                     name={name}
                                     key={props.id}
+                                    mask={props.mask}
                                     checked={checkedValue === props.value}
                                     onChange={handleChang} />  
                                 ))
@@ -205,6 +202,7 @@ const stateTemplate = {
             type: 'tel',
             warning: false,
             name: 'phone',
+            mask: '+7 (999) 999 99 99',
         },
         {
             value: '',
