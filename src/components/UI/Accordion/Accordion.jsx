@@ -33,6 +33,15 @@ export default function Accordion({
         }
     }
 
+    const accordionBlock = useRef(null);
+
+    useEffect(()=>{
+        if (open) {
+            const headerBottom = document.querySelector('header.header')?.getBoundingClientRect().bottom;
+            window.scrollTo(0, accordionBlock.current.getBoundingClientRect().top + window.pageYOffset - headerBottom);
+        }
+    },[]);
+
     useEffect(()=>{
         const {current} = bodyOfAccorion;
         if (!firstRender) {
@@ -49,6 +58,7 @@ export default function Accordion({
     
     return (
         <div
+            ref={accordionBlock}
             className={
                 !className ? classes.accordion :
                     `${classes.accordion} ${className}`}>

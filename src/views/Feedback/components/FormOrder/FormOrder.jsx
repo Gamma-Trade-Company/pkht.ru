@@ -91,7 +91,7 @@ export default function FormOrder() {
     }
 
     return (
-        <form className="form__order" style={{'padding-top': '1em'}} onSubmit={handleSubmit}>
+        <form className="form__order" style={{paddingTop: '1em'}} onSubmit={handleSubmit}>
             <input hidden name="id_theme" defaultValue="3" />
             {
                 state.afterSubmitting !== 'none' ?
