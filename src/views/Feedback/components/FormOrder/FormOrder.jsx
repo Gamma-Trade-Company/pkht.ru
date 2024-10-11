@@ -185,7 +185,7 @@ const stateTemplate = {
     inputs: [
         {
             value: '',
-            placeholder: 'ФИО',
+            placeholder: 'ФИО *',
             type: 'text',
             warning: false,
             name: 'name',
@@ -193,7 +193,7 @@ const stateTemplate = {
         },
         {
             value: '',
-            placeholder: 'E-mail',
+            placeholder: 'E-mail *',
             type: 'email',
             warning: false,
             name: 'email',
@@ -201,7 +201,7 @@ const stateTemplate = {
         },
         {
             value: '',
-            placeholder: 'Телефон',
+            placeholder: 'Телефон *',
             type: 'tel',
             warning: false,
             name: 'phone',
@@ -219,7 +219,7 @@ const stateTemplate = {
         },
         {
             value: '',
-            placeholder: 'Количество для заказа',
+            placeholder: 'Количество для заказа *',
             type: 'textarea',
             warning: false,
             datarequired: true,
@@ -228,7 +228,7 @@ const stateTemplate = {
         },
         {
             value: '',
-            placeholder: 'Основные характеристики товара',
+            placeholder: 'Основные характеристики товара *',
             type: 'textarea',
             description: `Например, цветовая палитра, количество цветов, перечень цветов или другие особенности товара `,
             warning: false,
@@ -237,7 +237,7 @@ const stateTemplate = {
         },
         {
             value: '',
-            placeholder: 'Характеристики тары или вид тары',
+            placeholder: 'Характеристики тары или вид тары *',
             type: 'textarea',
             description: `Например, ведро/банка/туба/коробочка/пакет и т.д.; материал PP, PET и т.д., цвет тары; если крышка и банка разного цвета - указать каждый цвет`,
             warning: false,
@@ -246,7 +246,7 @@ const stateTemplate = {
         },
         {
             value: '',
-            placeholder: 'Характеристики этикетки',
+            placeholder: 'Характеристики этикетки *',
             type: 'textarea',
             description: `Где должна быть этикетка, какой цвет, размер, плотность этикетки или стандартная, как на указанном аналоге`,
             warning: false,
@@ -255,7 +255,7 @@ const stateTemplate = {
         },
         {
             value: '',
-            placeholder: 'Пожелания по упаковке',
+            placeholder: 'Пожелания по упаковке *',
             type: 'textarea',
             description: `Коробка или пакет, нужна ли дополнительная промежуточная упаковка и т.д.`,
             warning: false,
@@ -282,7 +282,7 @@ const stateTemplate = {
                     value: '1',
                     type: 'radio',
                     label: 'Стандартный товар',
-                    subtitle: 'Стандарный товар - товар по уже ранее разработанной на производстве рецептуре/технологии; с возможностью изменения упаковочной тары(наверное упаковки, тары) и этикетки под заказчика.',
+                    subtitle: 'Стандартный товар - товар по уже ранее разработанной на производстве рецептуре/технологии; с возможностью изменения упаковки, тары и этикетки под заказчика.',
                 },
                 {
                     id: 'order2',
