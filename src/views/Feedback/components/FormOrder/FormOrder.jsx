@@ -140,11 +140,11 @@ export default function FormOrder() {
                 radioBtns[0].checkedValue === '1' ?
                 inputs.map(props => (
                     <Fragment key={props.name}>
-                        {props.description ? <p className={classes.subtitle} dangerouslySetInnerHTML={{__html: props.description}}></p> : null }
                         <Input 
                             {...props} 
                             className={classes.input__form + ` ${props.className ?? ''}`}
                             onChange={handleChang} />
+                        {props.description ? <p className={classes.subtitle} dangerouslySetInnerHTML={{__html: props.description}}></p> : null }
                             
                     </Fragment>
                 )) : <p>Заказ временно недоступен.</p>
@@ -215,7 +215,7 @@ const stateTemplate = {
             warning: false,
             name: 'product_link',
             datarequired: true,
-            description: `Выберите на сайте <a href="https://firma-gamma.ru/" target="_blank" rel="noopener noreferrer">https://firma-gamma.ru/</a> товар, аналог которого вы хотите создать`
+            description: `Выберите на сайте <a href="https://firma-gamma.ru/ishop/20362990886/" target="_blank" rel="noopener noreferrer">https://firma-gamma.ru/</a> товар, аналог которого вы хотите создать`
         },
         {
             value: '',
