@@ -25,6 +25,16 @@
             .label {
                 font-size: 14px;
             }
+
+            a {
+                text-decoration: none;
+                font-size: 14px;
+                
+                &.current {
+                    font-weight: 700;
+                }
+
+            }
         }
 
         li:not(:last-child) {

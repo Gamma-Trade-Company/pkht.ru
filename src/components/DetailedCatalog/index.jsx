@@ -7,6 +7,7 @@ import ProductItem from "../ProductItem";
 import { useMemo } from "react";
 import scrollAnimate from '../../utils/scrollAnimate';
 import FilterIcon from "../icons/filter";
+import { Link } from "react-router-dom";
 
 const DetailedCatalog = (props) => {
     const { id } = useParams();
@@ -17,7 +18,7 @@ const DetailedCatalog = (props) => {
     const navigate = useNavigate();
     
     const [data, setData] = useState(state);
-    const { title, filterList, productList } = data;
+    const { title, reloadPage, filterList, productList, categoryMenuList } = data;
         
         useEffect( () => {
             if (props.search === true) {
@@ -26,16 +27,17 @@ const DetailedCatalog = (props) => {
             else {
                 (async()=>{
                     const resp =  await fetch(`https://pkht.ru/api/catalog/${id}/`+location.search);
-                    const {goods, parentCategory: {name: title}, filters} = await resp.json();
+                    const {goods, parentCategory: {name: title}, filters, categoryMenu = []} = await resp.json();
         
                     filters.forEach(filter=>filter.formElem.sort((a,b)=>a.value > b.value ? 1 : -1));
                     
                     document.title = title + " — Переславский комбинат художественных товаров";
         
-                    setData({...data, title, filterList: filters, productList: goods});
+                    setData({...data, title, filterList: filters, title, categoryMenuList: categoryMenu, productList: goods});
                 })();
             }
-        }, []);
+            
+        }, [reloadPage]); // переменная солстояния изменяется только при клике по categoryMenu
 
         useEffect(()=>{
             if (props.search === true) {
@@ -70,13 +72,12 @@ const DetailedCatalog = (props) => {
                 } else {
                     if (formElem) {
 
-                        let isChecked = false;
+                        let isChecked = true;
 
                         item.checkedList.forEach(checkedName=>{
-                            if (checkedName === "filter-"+formElem.id) isChecked = true;
+                            if (checkedName === "filter-"+formElem.id) isChecked = false;
                         });
 
-                        isChecked = !isChecked;
                         if (isChecked) {
                             item.checkedList.push(props.name);
                         } else {
@@ -151,6 +152,28 @@ const DetailedCatalog = (props) => {
                 close={hideFilterMob}
             >
                 <ul className={classes.filter__list}>
+                    {
+                        categoryMenuList.map(({name, subcats})=>{
+                            return (
+                                <li key={name}>
+                                    <div className={classes.title}>
+                                        {name}:
+                                    </div>
+                                    <ul>
+                                        {
+                                            subcats.map(({url, name, current}) => {
+                                                return (
+                                                    <li key={url} onClick={()=>setData({...data, reloadPage: performance.now()})}>
+                                                        <Link to={url} className={current ? classes.current: ''}>{name}</Link>
+                                                    </li>
+                                                );
+                                            })
+                                        }
+                                    </ul>
+                                </li>
+                            )
+                        })
+                    }
                     {
                         filterList.map(({name, type, formElem, checkedValue, checkedList, codeName}) => {
                             return (
@@ -238,6 +261,7 @@ const state = {
     title: '',
     filterList: [],
     productList: [],
+    categoryMenuList: [],
     showFilterMob: false
 }
 
