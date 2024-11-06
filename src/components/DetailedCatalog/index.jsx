@@ -153,11 +153,11 @@ const DetailedCatalog = (props) => {
             >
                 <ul className={classes.filter__list}>
                     {
-                        categoryMenuList.map(({name, subcats})=>{
+                        categoryMenuList.map(({name, url, subcats})=>{
                             return (
-                                <li key={name}>
+                                <li key={name} onClick={()=>setData({...data, reloadPage: performance.now()})}>
                                     <div className={classes.title}>
-                                        {name}:
+                                        <Link to={url} className={classes.parent}>{name}:</Link>
                                     </div>
                                     <ul>
                                         {
