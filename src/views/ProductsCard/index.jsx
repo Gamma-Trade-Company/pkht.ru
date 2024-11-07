@@ -9,22 +9,20 @@ import classes from './ProductsCard.module.scss';
 const ProductsCard = () => {
     const {id} = useParams();
     const [productInfo, setProductInfo] = useState(state);
-    const {title, imgList, featureList, loaded} = productInfo;
+    const {title, imgList, featureList, loaded, description} = productInfo;
 
     useEffect(()=>{
         (async()=>{
             const resp = await fetch(`https://pkht.ru/api/catalog/product-card/${id}/`);
-            const { title, imgList, featureList } = await resp.json();
-            
+            const { title, imgList, featureList, description } = await resp.json();
             document.title = title + " — Переславский комбинат художественных товаров";
             
-            setProductInfo({...productInfo, title, imgList, featureList, loaded: featureList.length !== 0});
+            setProductInfo({...productInfo, title, imgList, featureList, description, loaded: featureList.length !== 0});
         })();
     },[]);
 
     return (
-        !loaded ?
-        <NotFound /> :
+        !loaded ?  <NotFound /> :
         <section className={classes.products__card}>
             <div className="container">
                 <h1 className={classes.title}>{title}</h1>
@@ -34,6 +32,11 @@ const ProductsCard = () => {
                     </div>
                     <div className={`${classes.feature}`}>
                         <ProductFeature featureList={featureList} />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className={'col ' + classes.descriptionWrap}>
+                        <p className={classes.description} dangerouslySetInnerHTML={{ __html: description}}></p>
                     </div>
                 </div>
             </div>
@@ -46,6 +49,7 @@ const state = {
     imgList: [],
     featureList: [],
     loaded: true,
+    description: '',
 };
 
 export default ProductsCard;
