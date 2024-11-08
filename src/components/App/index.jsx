@@ -17,6 +17,7 @@ import IndexCatalog from '../IndexCatalog';
 import ProductsCard from '../../views/ProductsCard';
 import SearchView from '../../views/Search';
 import Feedback from '../../views/Feedback';
+import PopUp from '../PopUp';
 // export default class App extends Component {
 //   constructor(props) {
 //     super(props);
@@ -83,6 +84,17 @@ export default function App() {
     return () => window.removeEventListener('scroll', handlerScroll);
   },[]);
 
+  const [{isShowPopUp, contentPopUp}, setPopUpState] = useState({isShowPopUp: false, contentPopUp: <></>});
+
+  const handlerPopUp = ({isShowPopUp, contentPopUp}) => {
+    document.body.style.overflowY = isShowPopUp ? 'hidden' : '';
+    if (!isShowPopUp) {
+      return setPopUpState({isShowPopUp: false});
+    } else {
+      setPopUpState(() => ({isShowPopUp: true, contentPopUp}));
+    }
+  };
+
   return (
     <>
       <Header />
@@ -93,7 +105,7 @@ export default function App() {
           <Route path='/where-to-buy' element={<WhereToBuy />} />
           <Route path='/catalog' element={<Catalog/>} >
             <Route index element={<IndexCatalog/>} />
-            <Route path='product-card/:id' element={<ProductsCard/>} />
+            <Route path='product-card/:id' element={<ProductsCard handlerPopUp={handlerPopUp}/>} />
             <Route path=':id/*' element={<DetailedCatalog/>} />
           </Route>
           
@@ -105,6 +117,11 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      {
+        isShowPopUp ? <PopUp className="test" handlerPopUp={handlerPopUp}>
+          {contentPopUp}
+        </PopUp> : null
+      }
     </>
   )
 }

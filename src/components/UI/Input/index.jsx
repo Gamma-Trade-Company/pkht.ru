@@ -20,10 +20,12 @@ export default class Input extends Component {
                     type === 'textarea' ? <textarea {...props}
                     className={`${className ? className : ''} ${classes.textarea} ${warning ? classes.warning : ''}`}
                     onChange={e=>onChange(this.props, e)} ></textarea>
-                    : <input 
+                    : type !== 'hidden' ? <input 
                     {...props}
                     className={`${className ? className : ''} ${classes.input} ${warning ? classes.warning : ''}`}
-                    onChange={e=>onChange(this.props, e)} />
+                    onChange={e=>onChange(this.props, e)} /> :  <input 
+                    {...props}
+                    className={`${className ? className : ''} ${classes.input} ${warning ? classes.warning : ''}`}/>
                 }
 
                 {
