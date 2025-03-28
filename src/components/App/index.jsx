@@ -18,6 +18,7 @@ import ProductsCard from '../../views/ProductsCard';
 import SearchView from '../../views/Search';
 import Feedback from '../../views/Feedback';
 import PopUp from '../PopUp';
+import Agreement from '../../views/Agreement';
 // export default class App extends Component {
 //   constructor(props) {
 //     super(props);
@@ -108,7 +109,7 @@ export default function App() {
             <Route path='product-card/:id' element={<ProductsCard handlerPopUp={handlerPopUp}/>} />
             <Route path=':id/*' element={<DetailedCatalog/>} />
           </Route>
-          
+          <Route path='/agreement-page' element={<Agreement/>} />
           <Route path='/search/:query' element={<SearchView />} />
           <Route path='/advantages' element={<Advantages/>} />
           <Route path='/about' element={<About/>} />
