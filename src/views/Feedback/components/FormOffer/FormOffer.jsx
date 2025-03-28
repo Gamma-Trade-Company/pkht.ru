@@ -3,6 +3,7 @@ import Button from "../../../../components/UI/Button";
 import Input from "../../../../components/UI/Input";
 import InfoBlock from "../../../../components/UI/InfoBlock";
 import './FormOffer.scss';
+import AgreementText from "../AgreementText";
 
 
 export default function FromOffer() {
@@ -170,11 +171,14 @@ export default function FromOffer() {
                     id="agreement1"
                     value="yes"
                     onChange={()=> setState({...state, agreementChecked: !state.agreementChecked})} />
-                <p className="agreement__text">
-                    Настоящим подтверждаю, что я согласен
-                    на обработку персональных данных, ознакомлен
-                    и согласен с условиями политики конфиденциальности.
-                </p>
+                <div className="agreement__text">
+                    <p>
+                        Настоящим подтверждаю, что я согласен
+                        на обработку персональных данных, ознакомлен
+                        и согласен с условиями политики конфиденциальности.
+                    </p>
+                    <AgreementText/>
+                </div>
             </div>
         </form>
     );

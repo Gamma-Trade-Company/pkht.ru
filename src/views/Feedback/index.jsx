@@ -10,6 +10,7 @@ export default function Feedback() {
             <div className="container">
                 <h1 className={classes.title}>Обратная связь</h1>
                 <Accordion
+                    useNavigateFlag={true}
                     summary="Предложение сырья и комплектующих"
                     open={window.location.hash.replace('#', '') === 'anchor-form-offer'}
                     id="anchor-form-offer"
@@ -17,6 +18,7 @@ export default function Feedback() {
                       <FormOffer/>
                 </Accordion>
                 <Accordion
+                    useNavigateFlag={true}
                     summary="Обратная связь от потребителей / отзывы про товар"
                     id="anchor-form-feedback"
                     open={window.location.hash.replace('#', '') === 'anchor-form-feedback'}
@@ -24,6 +26,7 @@ export default function Feedback() {
                       <FormFeedback/>
                 </Accordion>
                 <Accordion
+                    useNavigateFlag={true}
                     summary="Заказ товара под СТМ"
                     id="anchor-form-order-product"
                     open={window.location.hash.replace('#', '') === 'anchor-form-order-product'}

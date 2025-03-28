@@ -3,6 +3,7 @@ import Button from "../../../../components/UI/Button";
 import Input from "../../../../components/UI/Input";
 import InfoBlock from "../../../../components/UI/InfoBlock";
 import classes from './formOrder.module.scss';
+import AgreementText from "../AgreementText";
 
 export default function FormOrder() {
     const [state, setState] = useState(stateTemplate);
@@ -170,11 +171,14 @@ export default function FormOrder() {
                     id="agreement3"
                     value="yes"
                     onChange={() => setState({ ...state, agreementChecked: !state.agreementChecked })} />
-                <p className={classes.agreement__text}>
-                    Настоящим подтверждаю, что я согласен
-                    на обработку персональных данных, ознакомлен
-                    и согласен с условиями политики конфиденциальности.
-                </p>
+                <div className={classes.agreement__text}>
+                    <p>
+                        Настоящим подтверждаю, что я согласен
+                        на обработку персональных данных, ознакомлен
+                        и согласен с условиями политики конфиденциальности.
+                    </p>
+                    <AgreementText/>
+                </div>
             </div> : null
             }
         </form>

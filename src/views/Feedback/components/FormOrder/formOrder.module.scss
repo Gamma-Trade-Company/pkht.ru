@@ -43,10 +43,12 @@
    }
 
    .agreement__text {
-    font-size: 0.875rem;
-    line-height: 18px;
-    color: #7D7D7D;
-   }
+    p {
+        font-size: 0.875rem;
+        line-height: 18px;
+        color: #7D7D7D;
+    }
+}
 }
 
 .input__form {

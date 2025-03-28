@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import Input from "../../../../components/UI/Input";
 import Button from "../../../../components/UI/Button";
 import InfoBlock from "../../../../components/UI/InfoBlock";
+import AgreementText from '../AgreementText';
 import './FormFeedback.scss';
 
 export default function FormFeedback() {
@@ -140,11 +141,14 @@ export default function FormFeedback() {
                     id="agreement2"
                     value="yes"
                     onChange={()=> setState({...state, agreementChecked: !state.agreementChecked})} />
-                <p className="agreement__text">
-                    Настоящим подтверждаю, что я согласен
-                    на обработку персональных данных, ознакомлен
-                    и согласен с условиями политики конфиденциальности.
-                </p>
+                <div className="agreement__text">
+                    <p>
+                        Настоящим подтверждаю, что я согласен
+                        на обработку персональных данных, ознакомлен
+                        и согласен с условиями политики конфиденциальности.
+                    </p>
+                    <AgreementText/>
+                </div>
             </div>
         </form>
     );
@@ -179,5 +183,5 @@ const stateTemplate = {
     areaWarning: false,
     agreementChecked: true,
     isValidFormFlag: true,
-    afterSubmitting: 'none'
+    afterSubmitting: 'none',
 };

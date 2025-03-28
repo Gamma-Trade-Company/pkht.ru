@@ -11,6 +11,8 @@ export default function Accordion({
     bodyClass,
     id,
     open,
+    useNavigateFlag,
+    onClick = ()=>{},
     duration = 300 }) {
 
     const [collapse, setCollapse] = useState(!open);
@@ -21,6 +23,7 @@ export default function Accordion({
 
     function handleClick({target}) {
         setCollapse(prevState => !prevState);
+        if (!useNavigateFlag) return;
         const {id} = target;
         if (target.classList.contains(classes.active)) {
             target.classList.remove(classes.active);
@@ -61,7 +64,9 @@ export default function Accordion({
             ref={accordionBlock}
             className={
                 !className ? classes.accordion :
-                    `${classes.accordion} ${className}`}>
+                    `${classes.accordion} ${className}`}
+            onClick={onClick}
+            >
             <div
                 id={id}
                 className={classesStringSummary}
