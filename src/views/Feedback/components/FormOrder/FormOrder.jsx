@@ -31,6 +31,9 @@ export default function FormOrder() {
         e.preventDefault();
         const isValidFlag = isValidForm(state, setState);
         if (!isValidFlag || !state.agreementChecked) {
+            if (!state.agreementChecked) {
+                setState({ ...state, agreementCheckedFirstRendering: false})
+            }
             setState(state => ({...state, isValidFormFlag: isValidFlag, afterSubmitting: 'none'}));
             // if (state.agreementChecked) scrollAnimate(window, 0, 500);
             return;

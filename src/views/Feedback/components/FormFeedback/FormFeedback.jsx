@@ -30,6 +30,9 @@ export default function FormFeedback() {
                 formElem.current.getBoundingClientRect().top + window.pageYOffset - 120 :
                 0;
         if (!isValidFlag || !state.agreementChecked) {
+            if (!state.agreementChecked) {
+                setState({ ...state, agreementCheckedFirstRendering: false})
+            }
             setState(state => ({...state, isValidFormFlag: isValidFlag, afterSubmitting: 'none'}));
             return;
         }

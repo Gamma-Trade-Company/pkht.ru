@@ -36,6 +36,9 @@ export default function FromOffer() {
         e.preventDefault();
         const isValidFlag = isValidForm(state, setState);
         if (!isValidFlag || !state.agreementChecked) {
+            if (!state.agreementChecked) {
+                setState({ ...state, agreementCheckedFirstRendering: false})
+            }
             setState(state => ({...state, isValidFormFlag: isValidFlag, afterSubmitting: 'none'}));
             return;
         }
