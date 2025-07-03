@@ -155,7 +155,7 @@ export default function FromOffer() {
 
             <Button className="btn__submit" type="submit">Отправить</Button>
             {
-                !state.agreementChecked ? 
+                !state.agreementChecked && !state.agreementCheckedFirstRendering ? 
                 <InfoBlock className="form__offer-warning" warning>
                     Вы не дали согласие на обработку персональных данных!
                 </InfoBlock> :
@@ -170,7 +170,7 @@ export default function FromOffer() {
                     name="agreement"
                     id="agreement1"
                     value="yes"
-                    onChange={()=> setState({...state, agreementChecked: !state.agreementChecked})} />
+                    onChange={()=> setState({...state, agreementChecked: !state.agreementChecked, agreementCheckedFirstRendering: false})} />
                 <div className="agreement__text">
                     <p>
                         Настоящим подтверждаю, что я согласен
@@ -258,7 +258,8 @@ const stateTemplate = {
     ],
     areaValue: '',
     areaWarning: false,
-    agreementChecked: true,
+    agreementChecked: false,
+    agreementCheckedFirstRendering: true,
     isValidFormFlag: true,
     afterSubmitting: 'none'
 };

@@ -154,7 +154,7 @@ export default function FormOrder() {
              radioBtns[0].checkedValue === '1' ?  <Button className={classes.btn__submit} type="submit">Отправить</Button> : null 
             }
             {
-                !state.agreementChecked ?
+                !state.agreementChecked && !state.agreementCheckedFirstRendering ?
                     <InfoBlock className="form__offer-warning" warning>
                         Вы не дали согласие на обработку персональных данных!
                     </InfoBlock> :
@@ -170,7 +170,7 @@ export default function FormOrder() {
                     name="agreement"
                     id="agreement3"
                     value="yes"
-                    onChange={() => setState({ ...state, agreementChecked: !state.agreementChecked })} />
+                    onChange={() => setState({ ...state, agreementChecked: !state.agreementChecked, agreementCheckedFirstRendering: false})} />
                 <div className={classes.agreement__text}>
                     <p>
                         Настоящим подтверждаю, что я согласен
@@ -298,7 +298,8 @@ const stateTemplate = {
             ],
         },
     ],
-    agreementChecked: true,
+    agreementChecked: false,
+    agreementCheckedFirstRendering: true,
     isValidFormFlag: true,
     afterSubmitting: 'none'
 };

@@ -1,14 +1,19 @@
 .accordionWrap {
-   & > *:first-child {
-    width: auto;
-    display: inline-block;
-    font-size: 16px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid black;
-    margin-bottom: 15px;
-    padding-right: 0;
-    &::before {
-        display: none;
+    display: block;
+    margin-top: .5em;
+    &:hover {
+        color: #755fa0;
     }
-   } 
+//    & > *:first-child {
+//     width: auto;
+//     display: inline-block;
+//     font-size: 16px;
+//     padding-bottom: 2px;
+//     border-bottom: 1px solid black;
+//     margin-bottom: 15px;
+//     padding-right: 0;
+//     &::before {
+//         display: none;
+//     }
+//    } 
 }
